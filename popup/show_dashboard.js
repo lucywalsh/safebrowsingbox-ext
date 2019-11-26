@@ -1,10 +1,25 @@
 function listenForClicks() {
   document.addEventListener("click", (e) => {
 
+    //add functions to do things on click here
+
     function reportError(error) {
       console.error(`Could not analyse: ${error}`);
     }
-  }
+
+    /**
+    if (e.target.classList.contains("something")) {
+      browser.tabs.query({active: true, currentWindow: true})
+        .then(//call function)
+        .catch(reportError);
+    }
+    else if (e.target.classList.contains("something")) {
+      browser.tabs.query({active: true, currentWindow: true})
+        .then(//call function)
+        .catch(reportError);
+    }
+    */
+  });
 }
 
 function reportExecuteScriptError(error) {
