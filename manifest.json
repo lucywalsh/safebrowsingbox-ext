@@ -2,8 +2,6 @@
   "manifest_version": 2,
   "name": "Safe Browsing Box",
   "version": "1.0.0",
-
-  "default_locale": "en",
   "description": "Take control over your data privacy online with the Safe Browsing Box.",
   "author": "Lucy Walsh",
   "homepage_url": "https://github.com/lucywalsh/safebrowsingbox-ext",
@@ -15,7 +13,7 @@
   },
   "browser_action": {
     "default_title": "Safe Browsing Box",
-    "default_popup": "popup/dashboard.html"
+    "default_popup": "popup/dashboard.html",
     "browser_style": true
  },
  "content_scripts": [
