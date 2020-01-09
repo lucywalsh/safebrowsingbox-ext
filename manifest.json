@@ -16,13 +16,9 @@
     "default_popup": "popup/dashboard.html",
     "browser_style": true
  },
- "content_scripts": [
- {
-    "matches": ["<all_urls>"],
-    "js": ["content_scripts/analyse_site.js"],
-    "run_at": "document_start"
-  }
-],
+ "background":{
+   "scripts":[]
+ },
  "permissions": [
    "activeTab"
  ]
