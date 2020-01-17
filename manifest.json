@@ -11,15 +11,20 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
+
   "browser_action": {
     "default_title": "Safe Browsing Box",
     "default_popup": "popup/dashboard.html",
     "browser_style": true
  },
- "background":{
-   "scripts":[]
- },
- "permissions": [
-   "activeTab"
- ]
+
+  "permissions": [
+    "<all_urls>",
+    "tabs"
+  ],
+
+  "background":{
+    "scripts":[]
+  }
+
 }
