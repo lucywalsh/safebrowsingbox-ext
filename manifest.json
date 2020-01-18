@@ -24,7 +24,7 @@
   ],
 
   "background":{
-    "scripts":[]
+    "scripts":["background_scripts/background.js"]
   }
 
 }
