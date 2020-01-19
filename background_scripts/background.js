@@ -63,20 +63,23 @@ var fetch_policy = function(i, currentHost){
   return i+1;
 }
 
-var get_policy_info = function(){
-  var body = document.getElementById('body');
-  console.log(body.innerHTML);
-}
+var prev_host = '';
 
-browser.tabs.query({currentWindow: true, active: true})
-    .then((tabs) => {
-      var currentURL = new URL(tabs[0].url);
-      var currentHost = currentURL.hostname;
+browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
+  if(tabInfo.status == 'complete'){
+    browser.tabs.query({currentWindow: true, active: true})
+        .then((tabs) => {
+          var currentURL = new URL(tabs[0].url);
+          var currentHost = currentURL.hostname;
+          if(currentHost != prev_host){
+            var i = 0;
+            while(i<privacy_urls.length){
+              i = fetch_policy(i, currentHost);
+            }
+          }
+          prev_host = currentHost;
+        });
 
-      found_policy = false
-      var i = 0;
-      while(i<privacy_urls.length){
-        i = fetch_policy(i, currentHost);
-      }
-      //put message in alerts box
-    });
+  }
+
+});
