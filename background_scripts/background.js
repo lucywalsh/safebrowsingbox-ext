@@ -8,65 +8,59 @@ window.addEventListener('load', (event) => {
 */
 
 var privacy_urls = [
-  '/privacy',
   '/privacy-policy',
   '/privacy-notice',
   '/legal/privacy',
   '/legal/privacy-policy',
   '/pages/privacy',
   '/help/privacy-policy',
-  '/help/privacy-notice'
+  '/help/privacy-notice',
+  '/privacy'
 ]
 
 var analyse_policy = function(content){
   console.log(content);
+  console.log("Analysing policy...");
   //NLP analysis of policy_text
+
+  //check if scraped text is valid policy or not; if not, get user to manually navigate to policy + analyse
 
   //generate alerts
 
   // **** dummy code **** //
 
   //store alerts in local storage
-  
+
 }
 
 var fetch_policy = function(i, currentHost){
   policy_url = 'http://'+currentHost+privacy_urls[i];
+  console.log("Trying url: "+policy_url);
   fetch(policy_url).then((response) => {
-    console.log(response);
     if(response.status==200){
+      console.log("Valid URL.")
       var new_tab = browser.tabs.create({
         active:false,
         "url": policy_url
       });
-      browser.tabs.onUpdated.addListener(function(tabId, info){
-        if(info.status === 'complete'){
-          console.log('loaded');
-          //scrape info from page
-          var get_policy_body = function(){
-            var html_body = document.body.innerHTML;
-            var span = document.createElement('span');
-            span.innerHTML = html_body;
-            var policy_text = span.textContent;
-            console.log(policy_text);
+      new_tab.then(function(tab){
+        console.log('Created tab containing policy, tab id = '+tab.id);
+        browser.tabs.executeScript(tab.id,{
+          code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; browser.runtime.sendMessage({command: 'policyscraped', policytext:span.textContent}); policy_text=span.textContent; "
+        });
+        browser.runtime.onMessage.addListener((message) => {
+          if (message.command === "policyscraped") {
+            console.log("Privacy policy successfully scraped from "+policy_url);
+            analyse_policy(message.policytext);
+            console.log("Closing tab");
+            browser.tabs.remove(tab.id);
           }
-          get_policy_body = get_policy_body.toString();
-          var policy_text = browser.tabs.executeScript({
-            code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; browser.runtime.sendMessage({command: 'policyscraped', policytext:span.textContent}); policy_text=span.textContent; "
-          });
-          browser.runtime.onMessage.addListener((message) => {
-            if (message.command === "policyscraped") {
-              console.log("Privacy policy successfully scraped");
-              analyse_policy(message.policytext);
-            }
-          });
-        }
-      },{tabId:new_tab.id});
-    }
-    else{
-      return i+1;
+        });
+      });
+      return privacy_urls.length;
     }
   });
+  return i+1;
 }
 
 var get_policy_info = function(){
@@ -81,10 +75,8 @@ browser.tabs.query({currentWindow: true, active: true})
 
       found_policy = false
       var i = 0;
-      finished_fetching = false;
-      i = fetch_policy(i, currentHost);
-      if(i<privacy_urls.length){
-        fetch_policy();
+      while(i<privacy_urls.length){
+        i = fetch_policy(i, currentHost);
       }
       //put message in alerts box
     });
