@@ -20,14 +20,23 @@ var privacy_urls = [
 
 var analyse_policy = function(content){
   console.log(content);
+  //NLP analysis of policy_text
+
+  //generate alerts
+
+  // **** dummy code **** //
+
+  //store alerts in local storage
+  
 }
 
 var fetch_policy = function(i, currentHost){
   policy_url = 'http://'+currentHost+privacy_urls[i];
   fetch(policy_url).then((response) => {
+    console.log(response);
     if(response.status==200){
-      browser.tabs.create({
-        active:true,
+      var new_tab = browser.tabs.create({
+        active:false,
         "url": policy_url
       });
       browser.tabs.onUpdated.addListener(function(tabId, info){
@@ -43,16 +52,16 @@ var fetch_policy = function(i, currentHost){
           }
           get_policy_body = get_policy_body.toString();
           var policy_text = browser.tabs.executeScript({
-            code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; policy_text=span.textContent; "
+            code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; browser.runtime.sendMessage({command: 'policyscraped', policytext:span.textContent}); policy_text=span.textContent; "
           });
-          analyse_policy(policy_text);
+          browser.runtime.onMessage.addListener((message) => {
+            if (message.command === "policyscraped") {
+              console.log("Privacy policy successfully scraped");
+              analyse_policy(message.policytext);
+            }
+          });
         }
-      });
-      /*
-      window.addEventListener('load', (event) => {
-        console.log('page is fully loaded');
-      });
-      */
+      },{tabId:new_tab.id});
     }
     else{
       return i+1;
