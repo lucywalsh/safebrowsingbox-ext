@@ -18,7 +18,24 @@ var privacy_urls = [
   '/privacy'
 ]
 
-var analyse_policy = function(content){
+// temp - likely to change with results of user research
+var alerts = [
+  'user-profiling',
+  'targeted-advertising',
+  'third-party tracking',
+  'sensitive-characteristics',
+  'financial-information',
+  'selling-data',
+  'law-enforcement',
+  'unencrypted-comms',
+  'access-to-comms',
+  'data-sharing',
+  'data-retention',
+  'expected-use',
+  'location-information'
+]
+
+var analyse_policy = function(currentHost,content){
   console.log(content);
   console.log("Analysing policy...");
   //NLP analysis of policy_text
@@ -26,15 +43,25 @@ var analyse_policy = function(content){
   //check if scraped text is valid policy or not; if not, get user to manually navigate to policy + analyse
 
   //generate alerts
-
+  current_alerts = [];
   // **** dummy code **** //
+  for(i=0;i<4;i++){
+    var rand_index = Math.floor(Math.random() * alerts.length);
+    var rand_alert = alerts[rand_index];
+    current_alerts.push(rand_alert);
+  }
 
   //store alerts in local storage
+  var temp = {};
+  var key = currentHost;
+  temp[key] = current_alerts;
+  console.log(temp);
+  browser.storage.local.set(temp);
+  return current_alerts;
 
 }
 
-var fetch_policy = function(i, currentHost){
-  policy_url = 'http://'+currentHost+privacy_urls[i];
+var fetch_policy = function(policy_url, currentHost){
   console.log("Trying url: "+policy_url);
   fetch(policy_url).then((response) => {
     if(response.status==200){
@@ -51,16 +78,17 @@ var fetch_policy = function(i, currentHost){
         browser.runtime.onMessage.addListener((message) => {
           if (message.command === "policyscraped") {
             console.log("Privacy policy successfully scraped from "+policy_url);
-            analyse_policy(message.policytext);
+            var alerts = analyse_policy(currentHost,message.policytext);
             console.log("Closing tab");
             browser.tabs.remove(tab.id);
+            this_host_alerts = alerts;
+            return alerts;
           }
         });
       });
-      return privacy_urls.length;
     }
   });
-  return i+1;
+  return null;
 }
 
 var prev_host = '';
@@ -71,15 +99,40 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
         .then((tabs) => {
           var currentURL = new URL(tabs[0].url);
           var currentHost = currentURL.hostname;
-          if(currentHost != prev_host){
-            var i = 0;
-            while(i<privacy_urls.length){
-              i = fetch_policy(i, currentHost);
-            }
+          var this_host_alerts = [];
+          console.log(currentHost.toString());
+          browser.storage.local.get().then(function(item){
+            console.log("everything");
+            console.log(item);
+          });
+          //check if website already analysed
+          if(currentHost != prev_host && currentHost != ''){
+            browser.storage.local.get(currentHost).then(function(item){
+              console.log("currentHost query");
+              console.log(item);
+              if(Object.keys(item).length == 0){
+                //if no, analyse policy to get alerts
+                  var i = 0;
+                  while(i<privacy_urls.length){
+                    policy_url = 'http://'+currentHost+privacy_urls[i];
+                    this_host_alerts = fetch_policy(policy_url, currentHost);
+                    if(this_host_alerts == null){
+                      i++;
+                    }
+                    else{
+                      i = privacy_urls.length;
+                    }
+                  }
+              }
+              else{
+                //if yes, get alerts from storage
+                this_host_alerts = Object.values(item);
+              }
+              //send alerts to content script
+              //console.log(this_host_alerts);
+            })
           }
           prev_host = currentHost;
         });
-
-  }
-
+    }
 });
