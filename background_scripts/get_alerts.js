@@ -99,20 +99,24 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
         .then((tabs) => {
           var currentURL = new URL(tabs[0].url);
           var currentHost = currentURL.hostname;
-          var this_host_alerts = [];
-          console.log(currentHost.toString());
+          /*
           browser.storage.local.get().then(function(item){
             console.log("everything");
             console.log(item);
           });
+          */
           //check if website already analysed
           if(currentHost != prev_host && currentHost != ''){
             browser.storage.local.get(currentHost).then(function(item){
+              var this_host_alerts = [];
+              /*
               console.log("currentHost query");
               console.log(item);
+              */
               if(Object.keys(item).length == 0){
-                //if no, analyse policy to get alerts
+                //if alerts not stored, analyse policy to get alerts
                   var i = 0;
+                  //loop through possible URLs until policy found or list exhaused
                   while(i<privacy_urls.length){
                     policy_url = 'http://'+currentHost+privacy_urls[i];
                     this_host_alerts = fetch_policy(policy_url, currentHost);
@@ -123,13 +127,11 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
                       i = privacy_urls.length;
                     }
                   }
+                  //if policy not found:
+                  if(this_host_alerts == null){
+                    console.log("no policy found");
+                  }
               }
-              else{
-                //if yes, get alerts from storage
-                this_host_alerts = Object.values(item);
-              }
-              //send alerts to content script
-              //console.log(this_host_alerts);
             })
           }
           prev_host = currentHost;
