@@ -1,6 +1,13 @@
 html, body {
   width: 500px;
-  padding:5px;
+  padding:10px;
+  margin-right:10px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.header{
+  padding:10px;
 }
 
 .hidden {
@@ -13,4 +20,22 @@ html, body {
   text-align: center;
   font-size: 1.5em;
   cursor: pointer;
+}
+
+.title{
+  font-family:"Arial"
+}
+
+/* Style buttons */
+.icon-btn {
+  background-color: white; /* Blue background */
+  border: none; /* Remove borders */
+  color: gray; /* White text */
+  font-size: 24px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.icon-btn:hover {
+  color:black;
 }

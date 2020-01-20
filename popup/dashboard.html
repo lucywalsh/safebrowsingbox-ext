@@ -2,20 +2,22 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="dashboard.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
-    <h1>Safe Browsing Box Dashboard</h1>
     <div id="popup-content">
-      <h2>Current alerts</h2>
-      <p>Insert alerts here</p>
-      <p id='alerts'></p>
-      <h2>Tips</h2>
-      <p>Insert tips here</p>
-      <button>Customise Alerts</button>
+      <div id="header">
+        <img src="safe-browsing-box-logo-2.png" style="width:400px">
+      </div>
+      <pre style="display:inline-block">Current site:</pre><pre style="display:inline-block" id="currenthost"> </pre>
+      <div id=alerts-header style="display:flex;align-items:center">
+        <h2>Current alerts</h2>
+        <button class="icon-btn" id="settings" style="display:inline-block;"><i class="fa fa-cog"></i></button>
+      </div>
+      <div id='alerts'></div>
+      <h2>Security Advice</h2>
+      <div id="advice"></div>
     </div>
-    <div id="error-content" class="hidden">
-        <p>We can't analyse this webpage. Here are some general tips for making sure you're secure:</p>
-        <p>General security tips</p>
-    </div>
+    <script src="show_dashboard.js"></script>
   </body>
 </html>
