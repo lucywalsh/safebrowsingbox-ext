@@ -24,6 +24,7 @@ var alert_dict = {
   'data-retention':'This site keeps your data for an indefinite amount of time',
   'expected-use':'This site uses data for purposes you would not expect',
   'location-information':'This site collects location information',
+  'browser-fingerprinting':'This site uniquely identifies you without your explicit consent'
 }
 
 var advice_dict = {
@@ -40,6 +41,7 @@ var advice_dict = {
   'data-retention':'If you do not want this website to store your data anymore, you can send a Data Deletion Notice which they are obliged to comply with. Find a template [here], or you use [this service] to automate some of it for you. Note that your account will be deleted and you will not be able to use the service anymore. ',
   'expected-use':'Read the privacy policy of this website, especially the section about how your data is used, and check that you are happy with this. [Polisis] can help you to understand which data is being used for which purpose. ',
   'location-information':'Turn off location sharing in your browser [How?] and consider using a VPN to hide where your current location is - be careful to use a trusted VPN though, as otherwise you might be exposing your location even more! ExpressVPN and NordVPN are trustworhty.',
+  'browser-fingerprinting':'Consider installing Privacy Possum, which falsifies some data sent to the websites you browse to make it harder for them to track and profile you.'
 }
 
 //stylise alert div

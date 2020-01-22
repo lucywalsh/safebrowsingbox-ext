@@ -32,7 +32,8 @@ var alerts = [
   'data-sharing',
   'data-retention',
   'expected-use',
-  'location-information'
+  'location-information',
+  'browser-fingerprinting'
 ]
 
 var analyse_policy = function(currentHost,content){
