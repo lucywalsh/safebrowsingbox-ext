@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="settings.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="settings-content">
+      <h1 style="text-align:center">What would you like to be alerted about?</h1>
+      <table style="max-width:600px;border-collapse:separate;padding-left:50px;margin:auto">
+        <tr>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert1" id="user-profiling">
+              <label for="user-profiling" class="check-title">User Profiling</label>
+            </label>
+          </td>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert2" id="targeted-advertising">
+              <label for="targeted-advertising" class="check-title">Targeted Advertising</label>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert7" id="data-sharing">
+              <label for="data-sharing" class="check-title">Data Sharing</label>
+            </label>
+            <span class="sub-options">
+                <input type="checkbox" class="datasharing-subOption" name="alert7-1" id="law-enforcement">
+                <label for="law-enforcement">Law Enforcement</label><br>
+                <input type="checkbox" class="datasharing-subOption" name="alert7-2" id="advertisers">
+                <label for="advertisers">Advertisers</label><br>
+                <input type="checkbox" class="datasharing-subOption" name="alert7-3" id="researchers">
+                <label for="researchers">Researchers</label><br>
+            </span>
+          </td>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert4" id="data-collection">
+              <label for="data-collection" class="check-title">Data Collection</label>
+            </label>
+            <span class="sub-options">
+                <input type="checkbox" class="datacollection-subOption" name="alert4-2" id="sensitive">
+                <label for="sensitive">Sensitive information</label><br>
+                <input type="checkbox" class="datacollection-subOption" name="alert4-3" id="financial">
+                <label for="financial">Financial information</label><br>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="label-big-check">
+                <input type="checkbox" name="alert5" id="unencrypted-comms">
+                <label for="unencrypted-comms" class="check-title">Unencrypted Communications</label>
+            </label>
+          </td>
+          <td>
+            <label class="label-big-check">
+                <input type="checkbox" name="alert6" id="access-to-comms">
+                <label for="access-to-comms" class="check-title">Access to Communications</label>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert3" id="thirdparty-tracking">
+              <label for="thirdparty-tracking" class="check-title">Third-party Tracking</label>
+            </label>
+          </td>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert8" id="expected-use">
+              <label for="exepcted-use" class="check-title">Expected Use</label>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert9" id="location">
+              <label for="location" class="check-title">Location Information</label>
+            </label>
+          </td>
+          <td>
+            <label class="label-big-check">
+              <input type="checkbox" name="alert10" id="browser-fingerprinting">
+              <label for="browser-fingerprinting" class="check-title">Browser Fingerprinting</label>
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px;text-align:center" colspan="2">
+            <button class="styled-button" id="save" onclick="save_data();">Save</button>
+            <p id="saved-message"></p>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <script type="text/javascript" src="save_data.js"></script>
+    <script src="checkboxes.js"></script>
+  </body>
+</html>
