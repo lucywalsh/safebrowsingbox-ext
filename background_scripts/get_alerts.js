@@ -22,17 +22,18 @@ var privacy_urls = [
 var alerts = [
   'user-profiling',
   'targeted-advertising',
-  'third-party tracking',
-  'sensitive-characteristics',
-  'financial-information',
-  'selling-data',
+  'thirdparty-tracking',
+  'sensitive',
+  'financial',
+  'advertisers',
+  'researchers',
   'law-enforcement',
   'unencrypted-comms',
   'access-to-comms',
   'data-sharing',
   'data-retention',
   'expected-use',
-  'location-information',
+  'location',
   'browser-fingerprinting'
 ]
 

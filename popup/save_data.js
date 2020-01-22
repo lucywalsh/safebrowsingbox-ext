@@ -1,6 +1,7 @@
+//set previously saved settings as checked
 window.addEventListener('load',(event) => {
   browser.storage.local.get('alertSettings').then(function(item){
-    console.log(Object.values(item)[0]);
+    //console.log(Object.values(item)[0]);
     prev_settings = Object.values(item)[0];
     for(i=0;i<prev_settings.length;i++){
       document.getElementById(prev_settings[i]).checked=true;
@@ -8,6 +9,7 @@ window.addEventListener('load',(event) => {
   })
 });
 
+//save new settings
 document.getElementById("save").onclick = function save_data(){
   var temp = [];
 

@@ -66,6 +66,14 @@ browser.tabs.query({currentWindow: true, active: true})
       var currentHost = currentURL.hostname;
       var currentHostTextNode = document.createTextNode(currentHost);
       currenthostnode.appendChild(currentHostTextNode);
+      var alert_settings=[];
+
+      //get alert settings
+      browser.storage.local.get('alertSettings').then(function(item){
+        //console.log(Object.values(item)[0]);
+        alert_settings = Object.values(item)[0];
+        console.log(alert_settings);
+      });
 
       //retrieve alerts from local storage for current website
       browser.storage.local.get(currentHost).then(function(item){
@@ -80,8 +88,11 @@ browser.tabs.query({currentWindow: true, active: true})
           var alerts_list = document.createDocumentFragment();
           var advice_list = document.createDocumentFragment();
           for(i=0;i<this_host_alerts[0].length;i++){
-            alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
-            advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
+            console.log(this_host_alerts[0]);
+            if(alert_settings.includes(this_host_alerts[0][i])){
+              alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
+              advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
+            }
           }
           alertsnode.appendChild(alerts_list);
           advicenode.appendChild(advice_list);
