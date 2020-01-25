@@ -95,6 +95,12 @@ var fetch_policy = function(policy_url, currentHost){
 
 var prev_host = '';
 
+browser.runtime.onMessage.addListener((message) => {
+  if (message.command === "analysebutton") {
+    console.log("hi");
+  }
+}
+
 browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
   if(tabInfo.status == 'complete'){
     browser.tabs.query({currentWindow: true, active: true})
@@ -134,7 +140,7 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
                     console.log("no policy found");
                   }
               }
-            })
+            });
           }
           prev_host = currentHost;
         });

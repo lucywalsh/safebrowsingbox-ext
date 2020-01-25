@@ -4,11 +4,21 @@ settings_button.addEventListener('click',function(){
   browser.tabs.create({url: "settings.html"})
 })
 
+//analyse button
+var analyse_button = document.getElementById("alertsbutton");
+analyse_button.addEventListener('click',function(){
+  //send message to background script
+  browser.runtime.sendMessage({command:"analysebutton"});
+})
+
+
+
 
 //nodes to insert info into browser extension popup
 var alertsnode = document.getElementById("alerts");
+var alertsbutton = document.getElementById("alertsbutton");
 var currenthostnode = document.getElementById("currenthost");
-var advicenode = document.getElementById("advice")
+var advicenode = document.getElementById("advice");
 
 var alert_dict = {
   'user-profiling':'This site conducts user profiling',
@@ -70,7 +80,7 @@ browser.tabs.query({currentWindow: true, active: true})
 
       //get alert settings
       browser.storage.local.get('alertSettings').then(function(item){
-        //console.log(Object.values(item)[0]);
+        console.log(Object.values(item)[0]);
         alert_settings = Object.values(item)[0];
         console.log(alert_settings);
       });
@@ -81,7 +91,11 @@ browser.tabs.query({currentWindow: true, active: true})
         if(Object.keys(item).length == 0){
           var no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
           alertsnode.appendChild(no_policy_text);
-          //create Analyse button
+          var analyse_button = document.createElement("button");
+          analyse_button.innerHTML = 'Analyse';
+          analyse_button.setAttribute("id","analyse_button");
+          analyse_button.setAttribute("class","styled_button");
+          alertsbutton.appendChild(analyse_button);
         }
         else{
           this_host_alerts = Object.values(item);
@@ -89,10 +103,10 @@ browser.tabs.query({currentWindow: true, active: true})
           var advice_list = document.createDocumentFragment();
           for(i=0;i<this_host_alerts[0].length;i++){
             console.log(this_host_alerts[0]);
-            if(alert_settings.includes(this_host_alerts[0][i])){
+            //if(alert_settings.includes(this_host_alerts[0][i])){
               alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
               advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
-            }
+            //}
           }
           alertsnode.appendChild(alerts_list);
           advicenode.appendChild(advice_list);
