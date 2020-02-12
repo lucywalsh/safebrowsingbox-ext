@@ -25,7 +25,7 @@
   ],
 
   "background":{
-    "scripts":["background_scripts/get_alerts.js"]
+    "scripts":["background_scripts/get_alerts.js","background_scripts/socket.io.js"]
   }
 
 }
