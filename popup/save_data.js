@@ -90,10 +90,11 @@ document.getElementById("save").onclick = function save_data(){
 
   var temp2 = {};
   temp2['alertSettings'] = temp;
-  browser.storage.local.set(temp2);
+  browser.storage.local.set(temp2).then(function(){
+    //navigate to hardware settings
+    browser.tabs.update({url: "hardware_settings.html"})
+  });
 
-  //tell user that info is saved
-  document.getElementById("saved-message").appendChild(document.createTextNode("Saved! You can now close this tab\n"));
   //close tab
   /*
   browser.tabs.query({currentWindow: true, active: true}).then( (tabs) => {
