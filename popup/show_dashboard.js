@@ -1,7 +1,8 @@
 //settings button
 var settings_button = document.getElementById("settings");
 settings_button.addEventListener('click',function(){
-  browser.tabs.create({url: "settings.html"})
+  browser.tabs.create({url: "settings.html"});
+  window.close();
 })
 
 //analyse button
