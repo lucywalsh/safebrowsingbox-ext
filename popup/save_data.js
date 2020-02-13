@@ -28,6 +28,11 @@ document.getElementById("save").onclick = function save_data(){
     temp.push('thirdparty-tracking');
   }
 
+  var alert4 = document.getElementById("data-collection");
+  if(alert4.checked){
+    temp.push('data-collection');
+  }
+
   var alert4_2 = document.getElementById("sensitive");
   if(alert4_2.checked){
     temp.push('sensitive');
@@ -46,6 +51,11 @@ document.getElementById("save").onclick = function save_data(){
   var alert6 = document.getElementById("access-to-comms");
   if(alert6.checked){
     temp.push('access-to-comms');
+  }
+
+  var alert7 = document.getElementById("data-sharing");
+  if(alert7.checked){
+    temp.push('data-sharing');
   }
 
   var alert7_1 = document.getElementById("law-enforcement");
