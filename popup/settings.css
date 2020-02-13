@@ -12,6 +12,10 @@ td{
   padding-right:20px;
 }
 
+h1{
+  text-align:center;
+}
+
 .styled-button{
   background-color: white;
   color;black;
