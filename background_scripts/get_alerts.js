@@ -15,7 +15,7 @@ socket.on('connect', function() {
 });
 
 /* set default alert settings */
-defaults = {
+default_alerts = {
   "alertSettings": [
     "user-profiling",
     "targeted-advertising",
@@ -34,7 +34,33 @@ defaults = {
     "browser-fingerprinting"
   ]
 }
-browser.storage.local.set(defaults);
+
+default_hardware = {
+  "hardwareSettings": [
+    {"user-profiling_mode":"LED"},
+    {"user-profiling_customise":"Red"},
+    {"targeted-advertising_mode":"LED"},
+    {"targeted-advertising_customise":"Red"},
+    {"thirdparty-tracking_mode":"LED"},
+    {"thirdparty-tracking_customise":"Red"},
+    {"data-collection_mode":"LED"},
+    {"data-collection_customise":"Red"},
+    {"expected-use_mode":"LED"},
+    {"expected-use_customise":"Red"},
+    {"unencrypted-comms_mode":"LED"},
+    {"unencrypted-comms_customise":"Red"},
+    {"access-to-comms_mode":"LED"},
+    {"access-to-comms_customise":"Red"},
+    {"data-sharing_mode":"LED"},
+    {"data-sharing_customise":"Red"},
+    {"location_mode":"LED"},
+    {"location_customise":"Red"},
+    {"browser-fingerprinting_mode":"LED"},
+    {"browser-fingerprinting_customise":"Red"}
+  ]
+}
+browser.storage.local.set(default_alerts);
+browser.storage.local.set(default_hardware);
 
 //get current URL
 //console.log(document.location.href);
