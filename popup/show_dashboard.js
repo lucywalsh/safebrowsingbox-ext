@@ -25,7 +25,7 @@ var alert_dict = {
   'sensitive-characteristics':'This site collects sensitive characteristics',
   'financial-information':'This site collects your financial information',
   'selling-data':'This site sells your data to third-parties',
-  'law-enforcement':'This stie gives data to to Law Enforcement in some circumstances',
+  'law-enforcement':'This site gives data to to Law Enforcement in some circumstances',
   'unencrypted-comms':'The communcations you send on this site are unencrypted',
   'access-to-comms':"This site has access to your personal communications",
   'data-sharing':'This site shares your information with third-parties',
