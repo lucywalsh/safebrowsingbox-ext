@@ -14,6 +14,28 @@ socket.on('connect', function() {
   console.log('Client connected');
 });
 
+/* set default alert settings */
+defaults = {
+  "alertSettings": [
+    "user-profiling",
+    "targeted-advertising",
+    "thirdparty-tracking",
+    "data-collection",
+    "sensitive",
+    "financial",
+    "expected-use",
+    "unencrypted-comms",
+    "access-to-comms",
+    "data-sharing",
+    "law-enforcement",
+    "advertisers",
+    "researchers",
+    "location",
+    "browser-fingerprinting"
+  ]
+}
+browser.storage.local.set(defaults);
+
 //get current URL
 //console.log(document.location.href);
 
