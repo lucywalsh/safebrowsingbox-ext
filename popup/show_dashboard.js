@@ -21,17 +21,19 @@ var advicenode = document.getElementById("advice");
 var alert_dict = {
   'user-profiling':'This site conducts user profiling',
   'targeted-advertising':'This site contains targeted advertising',
-  'third-party tracking':'This site tracks your activity across the web',
-  'sensitive-characteristics':'This site collects sensitive characteristics',
-  'financial-information':'This site collects your financial information',
+  'thirdparty-tracking':'This site tracks your activity across the web',
+  'sensitive':'This site collects sensitive characteristics',
+  'financial':'This site collects your financial information',
   'selling-data':'This site sells your data to third-parties',
   'law-enforcement':'This site gives data to to Law Enforcement in some circumstances',
+  'advertisers':'This site sells data to advertisers',
+  'researchers':'This site gives or sells data to researchers',
   'unencrypted-comms':'The communcations you send on this site are unencrypted',
   'access-to-comms':"This site has access to your personal communications",
   'data-sharing':'This site shares your information with third-parties',
   'data-retention':'This site keeps your data for an indefinite amount of time',
   'expected-use':'This site uses data for purposes you would not expect',
-  'location-information':'This site collects location information',
+  'location':'This site collects location information',
   'browser-fingerprinting':'This site uniquely identifies you without your explicit consent'
 }
 
