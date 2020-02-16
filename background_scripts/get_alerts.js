@@ -171,6 +171,7 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
         .then((tabs) => {
           var currentURL = new URL(tabs[0].url);
           var currentHost = currentURL.hostname;
+          var myAddonId = browser.runtime.id;
           /*
           browser.storage.local.get().then(function(item){
             console.log("everything");
@@ -178,7 +179,7 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
           });
           */
           //check if website already analysed
-          if(currentHost != prev_host && currentHost != ''){
+          if(currentHost != prev_host && currentHost != '' && !currentURL.href.includes('moz-extension')){
             socket.emit('led',{color:'red'});
             browser.storage.local.get(currentHost).then(function(item){
               var this_host_alerts = [];
