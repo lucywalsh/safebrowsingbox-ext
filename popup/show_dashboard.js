@@ -45,12 +45,14 @@ var advice_dict = {
   'financial-information':'If you are purchasing something from this website, firstly make sure you trust it. Use a safe third-party payment provider like PayPal where possible instead of providing your card details. Save your card details where possible to avoid re-entering them often - this protects you if malicious code is inserted into a trusted site [Learn more].',
   'selling-data':'Provide as little information as possible to this website - consider using a fake email address and other details, which you can do automatically with extensions like Bloody Vikings and Privacy Possum.',
   'law-enforcement':'If you are not comfortable with your information being provided to law enforcement, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
+  'advertisers':'If you are not comfortable with your information being provided to advertisers, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
+  'researchers':'If you are not comfortable with your information being provided to researchers, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
   'unencrypted-comms':'Avoid sending any sensitive or private information in messages that you would not want the world to know. Consider using a secure end-to-end encrypted messaging service like Whatsapp or Telegram. For email, you can use ProtonMail.',
   'access-to-comms':"Avoid sending any information that you would not be comfortable with the provider of this site being able to see and potentially pass on to third-parties. Consider using a secure end-to-end encrypted messaging service like Whatsapp or Telegram. For email, you can use ProtonMail.",
   'data-sharing':'Avoid explicitly providing any information to this site that you would not be comfortable being shared with other companies that you might not have heard of - you do not have control over your information anymore after this happens. Consider providing fake information if you really need to use this service.',
   'data-retention':'If you do not want this website to store your data anymore, you can send a Data Deletion Notice which they are obliged to comply with. Find a template [here], or you use [this service] to automate some of it for you. Note that your account will be deleted and you will not be able to use the service anymore. ',
   'expected-use':'Read the privacy policy of this website, especially the section about how your data is used, and check that you are happy with this. [Polisis] can help you to understand which data is being used for which purpose. ',
-  'location-information':'Turn off location sharing in your browser [How?] and consider using a VPN to hide where your current location is - be careful to use a trusted VPN though, as otherwise you might be exposing your location even more! ExpressVPN and NordVPN are trustworhty.',
+  'location':'Turn off location sharing in your browser [How?] and consider using a VPN to hide where your current location is - be careful to use a trusted VPN though, as otherwise you might be exposing your location even more! ExpressVPN and NordVPN are trustworhty.',
   'browser-fingerprinting':'Consider installing Privacy Possum, which falsifies some data sent to the websites you browse to make it harder for them to track and profile you.'
 }
 
@@ -63,7 +65,9 @@ function createAlertDiv(alert_text){
 }
 
 function createAdviceDiv(alert){
+  console.log(alert);
   var security_text = advice_dict[alert];
+  console.log(security_text);
   var advicediv = document.createElement("div");
   advicediv.appendChild(document.createTextNode(security_text));
   return advicediv;
