@@ -108,6 +108,9 @@ browser.tabs.query({currentWindow: true, active: true})
             analyse_button.setAttribute("id","analyse_button");
             analyse_button.setAttribute("class","styled_button");
             alertsbutton.appendChild(analyse_button);
+            analyse_button.addEventListener('click',function(){
+              alertsbutton.appendChild(document.createTextNode("Analysing, please wait..."));
+            });
           }
           else{
           var alerts_list = document.createDocumentFragment();
