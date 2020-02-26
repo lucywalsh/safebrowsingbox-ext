@@ -167,7 +167,23 @@ var prev_host = '';
 
 browser.runtime.onMessage.addListener((message) => {
   if (message.command === "analysebutton") {
-    console.log("hi");
+    console.log("Manually analysing policy...");
+    //get host
+    browser.tabs.query({currentWindow: true, active: true})
+        .then((tabs) => {
+          var currentURL = new URL(tabs[0].url);
+          var currentHost = currentURL.hostname;
+          //get content of policy
+          browser.tabs.executeScript(tab.id,{
+            code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; browser.runtime.sendMessage({command: 'policyscraped', policytext:span.textContent}); policy_text=span.textContent; "
+          });
+          browser.runtime.onMessage.addListener((message) => {
+            if (message.command === "policyscraped") {
+              console.log("Privacy policy successfully manually scraped");
+              var alerts = analyse_policy(currentHost,message.policytext);
+            }
+          });
+        });
   }
 });
 
@@ -186,7 +202,6 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
           */
           //check if website already analysed
           if(currentHost != prev_host && currentHost != '' && !currentURL.href.includes('moz-extension')){
-            socket.emit('led',{color:'red'});
             browser.storage.local.get(currentHost).then(function(item){
               var this_host_alerts = [];
               //if alerts not stored, analyse policy to get alerts
@@ -206,6 +221,10 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
                   //if policy not found:
                   if(this_host_alerts == null){
                     console.log("no policy found");
+                    var temp = {};
+                    var key = currentHost;
+                    temp[key] = "NA";
+                    browser.storage.local.set(temp);
                   }
               }
               //if alerts stored

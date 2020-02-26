@@ -91,18 +91,25 @@ browser.tabs.query({currentWindow: true, active: true})
 
       //retrieve alerts from local storage for current website
       browser.storage.local.get(currentHost).then(function(item){
-        //if nothing found for current host:
+        //if not analysed yet:
+        console.log(Object.values(item));
         if(Object.keys(item).length == 0){
-          var no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
-          alertsnode.appendChild(no_policy_text);
-          var analyse_button = document.createElement("button");
-          analyse_button.innerHTML = 'Analyse';
-          analyse_button.setAttribute("id","analyse_button");
-          analyse_button.setAttribute("class","styled_button");
-          alertsbutton.appendChild(analyse_button);
+          var analysing_text = document.createTextNode("Analysing policy, please wait...");
+          alertsnode.appendChild(analysing_text);
         }
         else{
           this_host_alerts = Object.values(item);
+          //no policy found
+          if(this_host_alerts[0]=='NA'){
+            var no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
+            alertsnode.appendChild(no_policy_text);
+            var analyse_button = document.createElement("button");
+            analyse_button.innerHTML = 'Analyse';
+            analyse_button.setAttribute("id","analyse_button");
+            analyse_button.setAttribute("class","styled_button");
+            alertsbutton.appendChild(analyse_button);
+          }
+          else{
           var alerts_list = document.createDocumentFragment();
           var advice_list = document.createDocumentFragment();
           for(i=0;i<this_host_alerts[0].length;i++){
@@ -115,6 +122,7 @@ browser.tabs.query({currentWindow: true, active: true})
           alertsnode.appendChild(alerts_list);
           advicenode.appendChild(advice_list);
         }
+      }
       });
     });
 
