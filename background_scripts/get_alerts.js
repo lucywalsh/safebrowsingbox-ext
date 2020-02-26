@@ -37,30 +37,36 @@ default_alerts = {
 
 default_hardware = {
   "hardwareSettings": [
-    {"user-profiling_mode":"LED"},
-    {"user-profiling_customise":"Red"},
-    {"targeted-advertising_mode":"LED"},
-    {"targeted-advertising_customise":"Red"},
-    {"thirdparty-tracking_mode":"LED"},
-    {"thirdparty-tracking_customise":"Red"},
-    {"data-collection_mode":"LED"},
-    {"data-collection_customise":"Red"},
-    {"expected-use_mode":"LED"},
-    {"expected-use_customise":"Red"},
-    {"unencrypted-comms_mode":"LED"},
-    {"unencrypted-comms_customise":"Red"},
-    {"access-to-comms_mode":"LED"},
-    {"access-to-comms_customise":"Red"},
-    {"data-sharing_mode":"LED"},
-    {"data-sharing_customise":"Red"},
-    {"location_mode":"LED"},
-    {"location_customise":"Red"},
-    {"browser-fingerprinting_mode":"LED"},
-    {"browser-fingerprinting_customise":"Red"}
+    {"user-profiling":"LED"},
+    {"targeted-advertising":"LED"},
+    {"thirdparty-tracking":"LED"},
+    {"data-collection":"LED"},
+    {"expected-use":"LED"},
+    {"unencrypted-comms":"LED"},
+    {"access-to-comms":"LED"},
+    {"data-sharing":"LED"},
+    {"location":"LED"},
+    {"browser-fingerprinting":"LED"}
+  ]
+}
+
+default_customise = {
+  "customiseSettings":[
+    {"user-profiling":"Red"},
+    {"targeted-advertising":"Red"},
+    {"thirdparty-tracking":"Red"},
+    {"data-collection":"Red"},
+    {"expected-use":"Red"},
+    {"unencrypted-comms":"Red"},
+    {"access-to-comms":"Red"},
+    {"data-sharing":"Red"},
+    {"location":"Red"},
+    {"browser-fingerprinting":"Red"}
   ]
 }
 browser.storage.local.set(default_alerts);
 browser.storage.local.set(default_hardware);
+browser.storage.local.set(default_customise);
 
 //get current URL
 //console.log(document.location.href);
