@@ -174,6 +174,7 @@ browser.runtime.onMessage.addListener((message) => {
           var currentURL = new URL(tabs[0].url);
           var currentHost = currentURL.hostname;
           //get content of policy
+          tab = browser.tabs.getCurrent();
           browser.tabs.executeScript(tab.id,{
             code:"var html_body = document.body.innerHTML; var span = document.createElement('span'); span.innerHTML = html_body; browser.runtime.sendMessage({command: 'policyscraped', policytext:span.textContent}); policy_text=span.textContent; "
           });
