@@ -35,35 +35,32 @@ default_alerts = {
   ]
 }
 
-default_hardware = {
-  "hardwareSettings": [
-    {"user-profiling":"LED"},
-    {"targeted-advertising":"LED"},
-    {"thirdparty-tracking":"LED"},
-    {"data-collection":"LED"},
-    {"expected-use":"LED"},
-    {"unencrypted-comms":"LED"},
-    {"access-to-comms":"LED"},
-    {"data-sharing":"LED"},
-    {"location":"LED"},
-    {"browser-fingerprinting":"LED"}
-  ]
-}
+hardware_settings = {};
+hardware_settings['user-profiling'] = "LED";
+hardware_settings['targeted-advertising'] = "LED";
+hardware_settings['thirdparty-tracking'] = "LED";
+hardware_settings['data-collection'] = "LED";
+hardware_settings['expected-use'] = "LED";
+hardware_settings['unencrypted-commsg'] = "LED";
+hardware_settings['access-to-comms'] = "LED";
+hardware_settings['data-sharing'] = "LED";
+hardware_settings['location'] = "LED";
+hardware_settings['browser-fingerprinting'] = "LED";
+default_hardware = {"hardwareSettings":hardware_settings}
 
-default_customise = {
-  "customiseSettings":[
-    {"user-profiling":"Red"},
-    {"targeted-advertising":"Red"},
-    {"thirdparty-tracking":"Red"},
-    {"data-collection":"Red"},
-    {"expected-use":"Red"},
-    {"unencrypted-comms":"Red"},
-    {"access-to-comms":"Red"},
-    {"data-sharing":"Red"},
-    {"location":"Red"},
-    {"browser-fingerprinting":"Red"}
-  ]
-}
+customise_settings = {};
+customise_settings['user-profiling'] = "red";
+customise_settings['targeted-advertising'] = "red";
+customise_settings['thirdparty-tracking'] = "red";
+customise_settings['data-collection'] = "red";
+customise_settings['expected-use'] = "red";
+customise_settings['unencrypted-commsg'] = "red";
+customise_settings['access-to-comms'] = "red";
+customise_settings['data-sharing'] = "red";
+customise_settings['location'] = "red";
+customise_settings['browser-fingerprinting'] = "red";
+default_customise = {"customiseSettings":customise_settings}
+
 browser.storage.local.set(default_alerts);
 browser.storage.local.set(default_hardware);
 browser.storage.local.set(default_customise);
@@ -232,13 +229,27 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
               this_host_alerts = Object.values(item)[0];
               console.log("Alerts",this_host_alerts);
               //get alert settings
-              browser.storage.local.get('alertSettings').then(function(item){
-                alert_settings = Object.values(item)[0];
-                console.log("Settings",alert_settings);
-                for (alert in this_host_alerts){
+              browser.storage.local.get().then(function(item){
+                alert_settings = item['alertSettings'];
+                hardware_settings = item['hardwareSettings'];
+                customise_settings = item['customiseSettings'];
+                console.log(customise_settings);
+                console.log(hardware_settings);
+                for(i=0;i<this_host_alerts.length;i++){
+                  alert = this_host_alerts[i];
+                  if(alert == "advertisers" || alert == "researchers" || alert == "law-enforcement"){
+                    alert = "data-sharing";
+                  }
+                  if(alert == "sensitive" || alert == "financial"){
+                    alert = "data-collection";
+                  }
+                  console.log(alert);
                   if(alert_settings.includes(alert)){
                     //send alert to Arduino depending on setting
-                    socket.emit('led',{color:'red'});
+                    var method = hardware_settings[alert];
+                    var customise = customise_settings[alert];
+                    console.log(method,customise);
+                    socket.emit(method,{customise:customise});
                   }
                 }
               });

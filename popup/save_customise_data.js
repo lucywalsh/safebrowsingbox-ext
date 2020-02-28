@@ -12,61 +12,61 @@ window.addEventListener('load',(event) => {
 });
 
 document.getElementById("save_customise").onclick = function save_customise_data(){
-  var temp = []
+  var customise_settings = {};
 
   var userprofiling_customise = document.getElementById("user-profiling_customisedropdown");
   if(userprofiling_customise != null){
-    temp.push({'user-profiling':userprofiling_customise.value});
+    customise_settings['user-profiling'] = userprofiling_customise.value;
   }
 
   var targetedadvertising_customise = document.getElementById("targeted-advertising_customisedropdown");
   if(targetedadvertising_customise != null){
-    temp.push({'targeted-advertising':targetedadvertising_customise.value});
+    customise_settings['targeted-advertising'] = targetedadvertising_customise.value;
   }
 
   var datasharing_customise = document.getElementById("data-sharing_customisedropdown");
   if(datasharing_customise != null){
-    temp.push({'data-sharing':datasharing_customise.value});
+    customise_settings['data-sharing'] = datasharing_customise.value;
   }
 
   var datacollection_customise = document.getElementById("data-collection_customisedropdown");
   if(datacollection_customise != null){
-    temp.push({'data-collection':datacollection_customise.value});
+    customise_settings['data-collection'] = datacollection_customise.value;
   }
 
   var unencryptedcomms_customise = document.getElementById("unencrypted-comms_customisedropdown");
   if(unencryptedcomms_customise != null){
-    temp.push({'unencrypted-comms':unencryptedcomms_customise.value});
+    customise_settings['unencrypted-comms'] = unencryptedcomms_customise.value;
   }
 
   var accesstocomms_customise = document.getElementById("access-to-comms_customisedropdown");
   if(accesstocomms_customise != null){
-    temp.push({'access-to-comms':accesstocomms_customise.value});
+    customise_settings['access-to-comms'] = accesstocomms_customise.value;
   }
 
   var thirdpartytracking_customise = document.getElementById("thirdparty-tracking_customisedropdown");
   if(thirdpartytracking_customise != null){
-    temp.push({'thirdparty-tracking':thirdpartytracking_customise.value});
+    customise_settings['thirdparty-tracking'] = thirdpartytracking_customise.value;
   }
 
   var expecteduse_customise = document.getElementById("expected-use_customisedropdown");
   if(expecteduse_customise != null){
-    temp.push({'expected-use':expecteduse_customise.value});
+    customise_settings['expected-use'] = expecteduse_customise.value;
   }
 
   var location_customise = document.getElementById("location_customisedropdown");
   if(location_customise != null){
-    temp.push({'location':location_customise.value});
+    customise_settings['location':location_customise.value];
   }
 
   var browserfingerprinting_customise = document.getElementById("browser-fingerprinting_customisedropdown");
   if(browserfingerprinting_customise != null){
-    temp.push({'browser-fingerprinting':browserfingerprinting_customise.value});
+    customise_settings['browser-fingerprinting'] = browserfingerprinting_customise.value;
   }
 
-  var temp2 = {};
-  temp2['customiseSettings'] = temp;
-  browser.storage.local.set(temp2).then(function(){
+  var temp = {};
+  temp['customiseSettings'] = customise_settings;
+  browser.storage.local.set(temp).then(function(){
     //tell user information is saved
     document.getElementById("saved-message").appendChild(document.createTextNode("Saved! You can now close this tab\n"));
   });
