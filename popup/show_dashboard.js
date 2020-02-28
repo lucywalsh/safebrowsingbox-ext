@@ -61,6 +61,7 @@ function createAlertDiv(alert_text){
   var alert_text = alert_dict[alert_text];
   var alertdiv = document.createElement("div");
   alertdiv.appendChild(document.createTextNode(alert_text));
+  alertdiv.className = "alert-div";
   return alertdiv
 }
 
@@ -78,8 +79,8 @@ browser.tabs.query({currentWindow: true, active: true})
     .then((tabs) => {
       var currentURL = new URL(tabs[0].url);
       var currentHost = currentURL.hostname;
-      var currentHostTextNode = document.createTextNode(currentHost);
-      currenthostnode.appendChild(currentHostTextNode);
+      //var currentHostTextNode = document.createTextNode(currentHost);
+      //currenthostnode.appendChild(currentHostTextNode);
       var alert_settings=[];
 
       //get alert settings
@@ -94,7 +95,7 @@ browser.tabs.query({currentWindow: true, active: true})
         //if not analysed yet:
         console.log(Object.values(item));
         if(Object.keys(item).length == 0){
-          var analysing_text = document.createTextNode("Analysing policy, please wait...");
+          var analysing_text = document.createTextNode("Analysing policy... close and reopen this tab to recieve your alerts.");
           alertsnode.appendChild(analysing_text);
         }
         else{
@@ -104,12 +105,14 @@ browser.tabs.query({currentWindow: true, active: true})
             var no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
             alertsnode.appendChild(no_policy_text);
             var analyse_button = document.createElement("button");
-            analyse_button.innerHTML = 'Analyse';
-            analyse_button.setAttribute("id","analyse_button");
-            analyse_button.setAttribute("class","styled_button");
+            analyse_button.innerHTML = 'Analyse Policy';
+            analyse_button.id = "analyse_button";
+            analyse_button.className = 'styled-button';
             alertsbutton.appendChild(analyse_button);
             analyse_button.addEventListener('click',function(){
-              alertsbutton.appendChild(document.createTextNode("Analysing, please wait..."));
+              alertsbutton.appendChild(document.createTextNode("Analysing policy... close and reopen this tab to recieve your alerts."));
+              no_policy_text.parentNode.removeChild(no_policy_text);
+              analyse_button.parentNode.removeChild(analyse_button);
             });
           }
           else{
