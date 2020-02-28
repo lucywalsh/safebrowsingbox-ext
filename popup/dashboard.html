@@ -9,15 +9,31 @@
       <div id="header">
         <img src="safe-browsing-box-logo-2.png" style="width:400px">
       </div>
-      <pre style="display:inline-block">Current site:</pre><pre style="display:inline-block" id="currenthost"> </pre>
-      <div id=alerts-header style="display:flex;align-items:center">
-        <h2>Current alerts</h2>
-        <button class="icon-btn" id="settings" style="display:inline-block;"><i class="fa fa-cog"></i></button>
-      </div>
-      <div id='alerts'></div>
-      <div id='alertsbutton' style="padding:10px;display:flex;justify-content:center;"></div>
-      <h2>Security Advice</h2>
-      <div id="advice"></div>
+
+      <table>
+        <tr id="table-header">
+          <td id="alerts-header" style="width:50%">
+            <div style="display:flex;align-items:center">
+              <h2>Current alerts</h2>
+              <button class="icon-btn" id="settings" style="display:inline-block;"><i class="fa fa-cog"></i></button>
+            </div>
+          </td>
+          <td id="advice-header">
+            <div style="display:flex;align-items:center">
+            <h2>Security Advice</h2>
+          </div>
+          </td>
+        </tr>
+        <tr id="table-content">
+          <td id="alerts-content">
+            <div id='alerts'></div>
+            <div id='alertsbutton' style="padding:10px;display:flex;justify-content:center;"></div>
+          </td>
+          <td id="advice-content">
+            <div id="advice"></div>
+          </td>
+        </tr>
+      </table>
     </div>
     <script src="show_dashboard.js"></script>
   </body>
