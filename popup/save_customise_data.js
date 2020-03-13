@@ -56,7 +56,7 @@ document.getElementById("save_customise").onclick = function save_customise_data
 
   var location_customise = document.getElementById("location_customisedropdown");
   if(location_customise != null){
-    customise_settings['location':location_customise.value];
+    customise_settings['location'] = location_customise.value;
   }
 
   var browserfingerprinting_customise = document.getElementById("browser-fingerprinting_customisedropdown");

@@ -5,6 +5,14 @@ settings_button.addEventListener('click',function(){
   window.close();
 })
 
+//help button + popup
+//var help_modal = document.getElementById("myModal");
+
+var help_button = document.getElementById("help");
+help_button.addEventListener('click',function(){
+  //modal.style.display =
+})
+
 //analyse button
 var analyse_button = document.getElementById("alertsbutton");
 analyse_button.addEventListener('click',function(){
@@ -57,18 +65,19 @@ var advice_dict = {
 }
 
 //stylise alert div
-function createAlertDiv(alert_text){
-  var alert_text = alert_dict[alert_text];
+function createAlertDiv(alert){
+  var alert_text = alert_dict[alert];
   var alertdiv = document.createElement("div");
   alertdiv.appendChild(document.createTextNode(alert_text));
-  alertdiv.className = "alert-div";
+  alertdiv.className = "alert-div "+alert;
+  //console.log("alert-div "+alert);
   return alertdiv
 }
 
 function createAdviceDiv(alert){
-  console.log(alert);
+  //console.log(alert);
   var security_text = advice_dict[alert];
-  console.log(security_text);
+  //console.log(security_text);
   var advicediv = document.createElement("div");
   advicediv.appendChild(document.createTextNode(security_text));
   return advicediv;
@@ -85,15 +94,15 @@ browser.tabs.query({currentWindow: true, active: true})
 
       //get alert settings
       browser.storage.local.get('alertSettings').then(function(item){
-        console.log(Object.values(item)[0]);
+        //console.log(Object.values(item)[0]);
         alert_settings = Object.values(item)[0];
-        console.log(alert_settings);
+        //console.log(alert_settings);
       });
 
       //retrieve alerts from local storage for current website
       browser.storage.local.get(currentHost).then(function(item){
         //if not analysed yet:
-        console.log(Object.values(item));
+        //console.log(Object.values(item));
         if(Object.keys(item).length == 0){
           var analysing_text = document.createTextNode("Analysing policy... close and reopen this tab to recieve your alerts.");
           alertsnode.appendChild(analysing_text);
@@ -119,7 +128,7 @@ browser.tabs.query({currentWindow: true, active: true})
           var alerts_list = document.createDocumentFragment();
           var advice_list = document.createDocumentFragment();
           for(i=0;i<this_host_alerts[0].length;i++){
-            console.log(this_host_alerts[0]);
+            //console.log(this_host_alerts[0][i]);
             //if(alert_settings.includes(this_host_alerts[0][i])){
               alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
               advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));

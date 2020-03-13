@@ -1,3 +1,4 @@
+settings = ["access-to-comms","browser-fingerprinting","data-collection","data-sharing","expected-use","location","targeted-advertising","thirdparty-tracking","unencrypted-comms","user-profiling"];
 
 let createModeSelect = function(current_mode_setting){
   let select_mode = document.createElement('select');
@@ -9,10 +10,10 @@ let createModeSelect = function(current_mode_setting){
   sound_option.value = 'Sound';
   sound_option.innerHTML = 'Sound';
   select_mode.appendChild(sound_option);
-  let air_option = document.createElement("option");
-  air_option.value = 'Air';
-  air_option.innerHTML = 'Air';
-  select_mode.appendChild(air_option);
+  let movement_option = document.createElement("option");
+  movement_option.value = 'Movement';
+  movement_option.innerHTML = 'Movement';
+  select_mode.appendChild(movement_option);
   //set current value to previous setting
   select_mode.value = current_mode_setting;
   //set id
@@ -79,4 +80,17 @@ browser.storage.local.get().then(function(item){
 
     }
   }
+}).then(function(){
+  browser.storage.local.get('hardwareSettings').then(function(item){
+    prev_settings = Object.values(item)[0];
+    //change this code to update previous settings
+    for(i=0;i<settings.length;i++){
+      //console.log(settings[i]);
+      var checkbox = document.getElementById(settings[i]+"_modedropdown");
+      var prev_value = prev_settings[settings[i]];
+      if(prev_value != undefined && checkbox!=null){
+        checkbox.value = prev_value;
+      }
+    }
+  })
 });

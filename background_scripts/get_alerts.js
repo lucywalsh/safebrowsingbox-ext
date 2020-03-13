@@ -41,7 +41,7 @@ hardware_settings['targeted-advertising'] = "LED";
 hardware_settings['thirdparty-tracking'] = "LED";
 hardware_settings['data-collection'] = "LED";
 hardware_settings['expected-use'] = "LED";
-hardware_settings['unencrypted-commsg'] = "LED";
+hardware_settings['unencrypted-comms'] = "LED";
 hardware_settings['access-to-comms'] = "LED";
 hardware_settings['data-sharing'] = "LED";
 hardware_settings['location'] = "LED";
@@ -49,16 +49,16 @@ hardware_settings['browser-fingerprinting'] = "LED";
 default_hardware = {"hardwareSettings":hardware_settings}
 
 customise_settings = {};
-customise_settings['user-profiling'] = "red";
-customise_settings['targeted-advertising'] = "red";
-customise_settings['thirdparty-tracking'] = "red";
-customise_settings['data-collection'] = "red";
-customise_settings['expected-use'] = "red";
-customise_settings['unencrypted-commsg'] = "red";
-customise_settings['access-to-comms'] = "red";
-customise_settings['data-sharing'] = "red";
-customise_settings['location'] = "red";
-customise_settings['browser-fingerprinting'] = "red";
+customise_settings['user-profiling'] = "Red";
+customise_settings['targeted-advertising'] = "Red";
+customise_settings['thirdparty-tracking'] = "Red";
+customise_settings['data-collection'] = "Red";
+customise_settings['expected-use'] = "Red";
+customise_settings['unencrypted-comms'] = "Red";
+customise_settings['access-to-comms'] = "Red";
+customise_settings['data-sharing'] = "Red";
+customise_settings['location'] = "Red";
+customise_settings['browser-fingerprinting'] = "Red";
 default_customise = {"customiseSettings":customise_settings}
 
 browser.storage.local.set(default_alerts);
@@ -97,7 +97,6 @@ var alerts = [
   'law-enforcement',
   'unencrypted-comms',
   'access-to-comms',
-  'data-sharing',
   'data-retention',
   'expected-use',
   'location',
@@ -227,14 +226,14 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
               }
               //if alerts stored
               this_host_alerts = Object.values(item)[0];
-              console.log("Alerts",this_host_alerts);
+              //console.log("Alerts",this_host_alerts);
               //get alert settings
               browser.storage.local.get().then(function(item){
                 alert_settings = item['alertSettings'];
                 hardware_settings = item['hardwareSettings'];
                 customise_settings = item['customiseSettings'];
-                console.log(customise_settings);
-                console.log(hardware_settings);
+                //console.log(customise_settings);
+                //console.log(hardware_settings);
                 for(i=0;i<this_host_alerts.length;i++){
                   alert = this_host_alerts[i];
                   if(alert == "advertisers" || alert == "researchers" || alert == "law-enforcement"){
@@ -243,13 +242,14 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
                   if(alert == "sensitive" || alert == "financial"){
                     alert = "data-collection";
                   }
-                  console.log(alert);
+                  //console.log(alert);
                   if(alert_settings.includes(alert)){
                     //send alert to Arduino depending on setting
                     var method = hardware_settings[alert];
                     var customise = customise_settings[alert];
+                    console.log("SENDING:");
                     console.log(method,customise);
-                    socket.emit(method,{customise:customise});
+                    socket.emit(method,{data:customise});
                   }
                 }
               });

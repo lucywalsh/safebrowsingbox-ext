@@ -1,42 +1,49 @@
+settings = ["access-to-comms","browser-fingerprinting","data-collection","data-sharing","expected-use","location","targeted-advertising","thirdparty-tracking","unencrypted-comms","user-profiling"];
+
 let createCustomiseSelect = function(current_mode_setting,current_customise_setting){
   let select_customise = document.createElement('select');
-  let option1 = document.createElement("option");
-  let option2 = document.createElement("option");
-  let option3 = document.createElement("option");
   var options = [];
   if(current_mode_setting == 'LED'){
-    options = ['Red','Blue','Green']
+    let option1 = document.createElement("option");
+    let option2 = document.createElement("option");
+    let option3 = document.createElement("option");
+    options = ['Red','Blue','Green'];
     option1.value = 'Red';
     option1.innerHTML = 'Red';
     option2.value = 'Blue';
     option2.innerHTML = 'Blue';
     option3.value = 'Green';
     option3.innerHTML = 'Green';
+    select_customise.appendChild(option1);
+    select_customise.appendChild(option2);
+    select_customise.appendChild(option3);
   }
   else if(current_mode_setting=='Sound'){
-    options = ['sound1','sound2','sound3']
-    option1.value = 'sound1';
-    option1.innerHTML = 'sound1';
-    option2.value = 'sound2';
-    option2.innerHTML = 'sound2';
-    option3.value = 'sound3';
-    option3.innerHTML = 'sound3';
+    let option1 = document.createElement("option");
+    let option2 = document.createElement("option");
+    options = ['Long Buzz','Alarm'];
+    option1.value = 'Long Buzz';
+    option1.innerHTML = 'Long Buzz';
+    option2.value = 'Alarm';
+    option2.innerHTML = 'Alarm';
+    select_customise.appendChild(option1);
+    select_customise.appendChild(option2);
   }
-  else if(current_mode_setting == 'Air'){
-    options = ['air1','air2','air3']
-    option1.value = 'air1';
-    option1.innerHTML = 'air1';
-    option2.value = 'air2';
-    option2.innerHTML = 'air2';
-    option3.value = 'air3';
-    option3.innerHTML = 'air3';
+  else if(current_mode_setting == 'Movement'){
+    let option1 = document.createElement("option");
+    options = ['Spin'];
+    option1.value = 'Spin';
+    option1.innerHTML = 'Spin';
+    select_customise.appendChild(option1);
   }
-  select_customise.appendChild(option1);
-  select_customise.appendChild(option2);
-  select_customise.appendChild(option3);
   //set current value to previous setting
+  //console.log(current_customise_setting);
+  //console.log(options);
   if(current_customise_setting!="" && options.includes(current_customise_setting)){
     select_customise.value = current_customise_setting;
+  }
+  else{
+    select_customise.value = options[0];
   }
   //set id
   select_customise.id = alert_id+"_customisedropdown";
@@ -77,6 +84,9 @@ browser.storage.local.get().then(function(item){
       current_mode_setting = "";
       current_customise_setting = "";
 
+      current_mode_setting = hardware_settings[alert_id];
+      current_customise_setting = customise_settings[alert_id];
+/*
       for(j=0;j<customise_settings.length;j++){
         if(Object.keys(customise_settings[j])==alert_id){
           current_customise_setting = Object.values(customise_settings[j])[0];
@@ -87,7 +97,7 @@ browser.storage.local.get().then(function(item){
           current_mode_setting = Object.values(hardware_settings[k])[0];
         }
       };
-
+*/
       //create elements
       row = document.createElement("tr");
       row.style = "padding:10px";
