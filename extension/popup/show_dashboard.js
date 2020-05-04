@@ -131,7 +131,7 @@ browser.tabs.query({currentWindow: true, active: true})
             //console.log(this_host_alerts[0][i]);
             //if(alert_settings.includes(this_host_alerts[0][i])){
               alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
-              advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
+              //advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
             //}
           }
           alertsnode.appendChild(alerts_list);
