@@ -24,49 +24,37 @@ analyse_button.addEventListener('click',function(){
 var alertsnode = document.getElementById("alerts");
 var alertsbutton = document.getElementById("alertsbutton");
 var currenthostnode = document.getElementById("currenthost");
-var advicenode = document.getElementById("advice");
+//var advicenode = document.getElementById("advice");
 
 var alert_dict = {
-  'user-profiling':'This site conducts user profiling',
-  'targeted-advertising':'This site contains targeted advertising',
-  'thirdparty-tracking':'This site tracks your activity across the web',
-  'sensitive':'This site collects sensitive characteristics',
-  'financial':'This site collects your financial information',
-  'selling-data':'This site sells your data to third-parties',
-  'law-enforcement':'This site gives data to to Law Enforcement in some circumstances',
-  'advertisers':'This site sells data to advertisers',
-  'researchers':'This site gives or sells data to researchers',
-  'unencrypted-comms':'The communcations you send on this site are unencrypted',
-  'access-to-comms':"This site has access to your personal communications",
-  'data-sharing':'This site shares your information with third-parties',
-  'data-retention':'This site keeps your data for an indefinite amount of time',
-  'expected-use':'This site uses data for purposes you would not expect',
-  'location':'This site collects location information',
-  'browser-fingerprinting':'This site uniquely identifies you without your explicit consent'
-}
+  "Firstparty-tracking":"This site is tracking your activity",
+  "Thirdparty-collection":"Third-parties are collecting information about you on this site",
+  "Targeted-ads":"Targeted advertising is present on this site",
+  "Personalisation":"This site uses your information to personalise the site to you",
+  "Thirdparty-tracking":"Third-parties are tracking your activity on this site",
+  "Location":"This site is collecting your location information",
+  "Financial":"This site is collecting your financial information",
+  "Personal":"This site collects personal information",
+  "DoNotTrack":"This site ignores Do Not Track headers",
+  "Health":"This site collects your health information"}
 
 var advice_dict = {
-  'user-profiling':'Provide as little information as possible to this website. Consider installing Privacy Possum, which falsifies some data sent to the websites you browse to make it harder for them to track and profile you.',
-  'targeted-advertising':'1) Install an Adblocker like uBlock to stop seeing most ads - some sites will make you switch off your adblocker to use their service though, so... 2) Change your settings on the websites you use most to stop seeing targeted ads [How?] 3) Install an extension that stops third-party tracking [See examples]',
-  'third-party tracking':'Consider installing an extension to block third-party cookies and remove outgoing links like Privacy Badger',
-  'sensitive-characteristics':'Avoid explicitly providing this information where possible - sites are not allowed to force you to provide this information. Consider installing an extension to make user profiling more difficult [Learn more]',
-  'financial-information':'If you are purchasing something from this website, firstly make sure you trust it. Use a safe third-party payment provider like PayPal where possible instead of providing your card details. Save your card details where possible to avoid re-entering them often - this protects you if malicious code is inserted into a trusted site [Learn more].',
-  'selling-data':'Provide as little information as possible to this website - consider using a fake email address and other details, which you can do automatically with extensions like Bloody Vikings and Privacy Possum.',
-  'law-enforcement':'If you are not comfortable with your information being provided to law enforcement, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
-  'advertisers':'If you are not comfortable with your information being provided to advertisers, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
-  'researchers':'If you are not comfortable with your information being provided to researchers, consider using fake details which you can generate safely with browser extensions like Bloody Vikings and Privacy Possum.',
-  'unencrypted-comms':'Avoid sending any sensitive or private information in messages that you would not want the world to know. Consider using a secure end-to-end encrypted messaging service like Whatsapp or Telegram. For email, you can use ProtonMail.',
-  'access-to-comms':"Avoid sending any information that you would not be comfortable with the provider of this site being able to see and potentially pass on to third-parties. Consider using a secure end-to-end encrypted messaging service like Whatsapp or Telegram. For email, you can use ProtonMail.",
-  'data-sharing':'Avoid explicitly providing any information to this site that you would not be comfortable being shared with other companies that you might not have heard of - you do not have control over your information anymore after this happens. Consider providing fake information if you really need to use this service.',
-  'data-retention':'If you do not want this website to store your data anymore, you can send a Data Deletion Notice which they are obliged to comply with. Find a template [here], or you use [this service] to automate some of it for you. Note that your account will be deleted and you will not be able to use the service anymore. ',
-  'expected-use':'Read the privacy policy of this website, especially the section about how your data is used, and check that you are happy with this. [Polisis] can help you to understand which data is being used for which purpose. ',
-  'location':'Turn off location sharing in your browser [How?] and consider using a VPN to hide where your current location is - be careful to use a trusted VPN though, as otherwise you might be exposing your location even more! ExpressVPN and NordVPN are trustworhty.',
-  'browser-fingerprinting':'Consider installing Privacy Possum, which falsifies some data sent to the websites you browse to make it harder for them to track and profile you.'
+  "Firstparty-tracking":"This site is tracking your activity",
+  "Thirdparty-collection":"Consider installing an extension to block third-party cookies and remove outgoing links like Privacy Badger",
+  "Targeted-ads":"1) Install an Adblocker like uBlock to stop seeing most ads - some sites will make you switch off your adblocker to use their service though, so... 2) Change your settings on the websites you use most to stop seeing targeted ads [How?] 3) Install an extension that stops third-party tracking [See examples]",
+  "Personalisation":"Consider installing an extension to make user profiling more difficult [Learn more]",
+  "Thirdparty-tracking":"Consider installing an extension to block third-party cookies and remove outgoing links like Privacy Badger",
+  "Location":"Turn off location sharing in your browser [How?] and consider using a VPN to hide where your current location is - be careful to use a trusted VPN though, as otherwise you might be exposing your location even more! ExpressVPN and NordVPN are trustworhty.",
+  "Financial":"If you are purchasing something from this website, firstly make sure you trust it. Use a safe third-party payment provider like PayPal where possible instead of providing your card details. Save your card details where possible to avoid re-entering them often - this protects you if malicious code is inserted into a trusted site [Learn more]",
+  "Personal":"Avoid explicitly providing this information where possible - sites are not allowed to force you to provide personal or sensitive information. Consider installing an extension to make user profiling more difficult [Learn more]",
+  "DoNotTrack":"Consider installing Privacy Badger, which keeps track of whether sites ignore Do Not Track and will aggressively block cookies if so.",
+  "Health":"Consider installing an extension to make user profiling more difficult [Learn more]"
 }
 
 //stylise alert div
 function createAlertDiv(alert){
   var alert_text = alert_dict[alert];
+  console.log(alert_text);
   var alertdiv = document.createElement("div");
   alertdiv.appendChild(document.createTextNode(alert_text));
   alertdiv.className = "alert-div "+alert;
@@ -102,7 +90,7 @@ browser.tabs.query({currentWindow: true, active: true})
       //retrieve alerts from local storage for current website
       browser.storage.local.get(currentHost).then(function(item){
         //if not analysed yet:
-        //console.log(Object.values(item));
+        console.log(Object.values(item));
         if(Object.keys(item).length == 0){
           var analysing_text = document.createTextNode("Analysing policy... close and reopen this tab to recieve your alerts.");
           alertsnode.appendChild(analysing_text);
@@ -128,14 +116,14 @@ browser.tabs.query({currentWindow: true, active: true})
           var alerts_list = document.createDocumentFragment();
           var advice_list = document.createDocumentFragment();
           for(i=0;i<this_host_alerts[0].length;i++){
-            //console.log(this_host_alerts[0][i]);
+            console.log(this_host_alerts[0][i]);
             //if(alert_settings.includes(this_host_alerts[0][i])){
               alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
               //advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
             //}
           }
           alertsnode.appendChild(alerts_list);
-          advicenode.appendChild(advice_list);
+          //advicenode.appendChild(advice_list);
         }
       }
       });
