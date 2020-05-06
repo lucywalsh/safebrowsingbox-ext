@@ -63,31 +63,15 @@ html, body {
   background-color:#FCE4EC; /*pink*/
 }
 
-.sensitive{
-  background-color:#FCE4EC; /*pink*/
-}
-
-.advertisers{
+.personal{
   background-color:#F3E5F5; /*purple*/
 }
 
-.data-sharing{
-  background-color:#F3E5F5; /*purple*/
-}
-
-.law-enforcement{
-  background-color:#F3E5F5; /*purple*/
-}
-
-.researchers{
-  background-color:#F3E5F5; /*purple*/
-}
-
-.user-profiling{
+.health{
   background-color:#E3F2FD; /*blue*/
 }
 
-.targeted-advertising{
+.targeted-ads{
   background-color:#E8F5E9; /*green*/
 }
 
@@ -95,27 +79,19 @@ html, body {
   background-color:#FBE9E7; /*orange*/
 }
 
-.selling-data{
+.thirdparty-collection{
   background-color:#FFFDE7; /*yellow*/
 }
 
-.unencrypted-comms{
+.personalisation{
   background-color:#E0F2F1; /*teal*/
 }
 
-.access-to-comms{
-  background-color:#EFEBE9; /*brown*/
-}
-
-.data-retention{
+.donottrack{
   background-color:#F5F5F5; /*grey*/
 }
 
-.expected-use{
-  background-color:#E8EAF6; /*indigo*/
-}
-
-.browser-fingerprinting{
+.firstparty-tracking{
   background-color:#F9FBE7; /*lime green*/
 }
 
