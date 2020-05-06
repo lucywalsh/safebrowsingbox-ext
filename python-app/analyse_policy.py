@@ -23,6 +23,18 @@ multilabel_binarizer = load('multilabel_binarizer_2.joblib')
 #define English stop_words
 stop_words = ["she's", "mightn't", 'most', "don't", 'before', 'in', 'through', 'above', 'can', 'shouldn', 'had', 'his', 'should', 'when', 'very', 'for', "isn't", 'was', 'be', 'so', "it's", 'our', 'few', 'ourselves', 'under', 'against', 'theirs', 'whom', 'haven', 'all', "you'd", 'until', "needn't", 's', 'other', 'to', "won't", 'while', 'itself', 'he', 'am', 'what', 'same', "you've", 'me', 'm', 'further', 'nor', 'up', 'this', "wouldn't", 't', "you'll", 'or', 'because', 'there', 'more', 'yours', 'myself', 'yourself', 'off', 'ours', 'now', "shan't", 'out', "haven't", 'yourselves', 'from', 'themselves', 'too', 'doing', 'a', "aren't", 'once', 'been', 'during', 'about', "that'll", 'd', 'after', 'mustn', 'but', 'them', 'as', 'o', 'the', 'needn', 'have', 'which', 'where', 'by', 'down', 'how', 'hadn', 'i', 'again', 'mightn', 'these', 've', "didn't", 'wouldn', 'my', 'at', 'just', 'only', 'no', 'are', 'll', 'hers', "shouldn't", 'don', 'of', 'y', 'shan', 'her', 'did', 'any', "wasn't", 'ain', 'those', 'will', "hadn't", 'being', 'your', 'then', "should've", 'its', "you're", 'between', 'into', 'wasn', 'weren', 'it', 'does', 'that', 'were', 'you', 'below', 'do', 'both', "doesn't", "couldn't", 'ma', 'won', 'couldn', "weren't", 'who', 'has', 'on', 'hasn', 'than', 'if', 'over', 'such', 'didn', 'herself', 'each', 'here', 'aren', 'him', 'we', 'an', 'own', 'himself', 'their', 'is', 'not', 'some', 'isn', "hasn't", 'they', 'why', 're', 'she', 'doesn', "mustn't", 'and', 'with', 'having']
 
+#alerts we are interested in returning
+alerts = ["Firstparty-tracking",
+"Thirdparty-collection",
+"Targeted-ads",
+"Personalisation",
+"Thirdparty-tracking",
+"Minors",
+"Location",
+"Financial",
+"DoNotTrack",
+"Health"]
+
 def get_page_content(url):
 
     #get page content
@@ -66,7 +78,7 @@ def infer_labels(page_content):
         predicted_labels = multilabel_binarizer.inverse_transform(predictions)
         for labels_tuple in predicted_labels:
             for label in labels_tuple:
-                if label not in all_labels and label!='':
+                if label not in all_labels and str(label) in alerts:
                     all_labels.append(label)
     return all_labels
 

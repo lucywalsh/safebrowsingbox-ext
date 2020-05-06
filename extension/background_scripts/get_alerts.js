@@ -88,53 +88,31 @@ var privacy_urls = [
   '/privacy'
 ]
 
-// temp - likely to change with results of user research
-var alerts = [
-  'user-profiling',
-  'targeted-advertising',
-  'thirdparty-tracking',
-  'sensitive',
-  'financial',
-  'advertisers',
-  'researchers',
-  'law-enforcement',
-  'unencrypted-comms',
-  'access-to-comms',
-  'data-retention',
-  'expected-use',
-  'location',
-  'browser-fingerprinting'
-]
-
 var analyse_policy = function(currentHost,content){
   console.log(content);
   console.log("Analysing policy...");
-  //NLP analysis of policy_text
+  //send policy URL to Python script which will scrape content and analyse
   port.postMessage(content);
-  //Listen for messages from the app.
+  //Listen for message from the Python script
   port.onMessage.addListener((response) => {
     console.log("Received: " + response);
+    alerts = JSON.stringify(response);
+    alerts = alerts.split(",");
+    current_alerts = []
+    for(i=0;i<alerts.length;i=i+1){
+      alert = alerts[i].replace("[","");
+      alert = alert.replace("]","");
+      alert = alert.trim();
+      current_alerts.push(alert);
+    }
+    console.log("Current alerts:"+current_alerts);
+    //store alerts in local storage
+    var temp = {};
+    var key = currentHost;
+    temp[key] = current_alerts;
+    browser.storage.local.set(temp);
+    return current_alerts;
   });
-
-  //check if scraped text is valid policy or not; if not, get user to manually navigate to policy + analyse
-
-  //generate alerts
-  current_alerts = [];
-  // **** dummy code **** //
-  for(i=0;i<4;i++){
-    var rand_index = Math.floor(Math.random() * alerts.length);
-    var rand_alert = alerts[rand_index];
-    current_alerts.push(rand_alert);
-  }
-
-  //store alerts in local storage
-  var temp = {};
-  var key = currentHost;
-  temp[key] = current_alerts;
-  console.log(temp);
-  browser.storage.local.set(temp);
-  return current_alerts;
-
 }
 
 var fetch_policy = function(policy_url, currentHost){
