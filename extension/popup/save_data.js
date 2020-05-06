@@ -28,7 +28,7 @@ document.getElementById("save").onclick = function save_data(){
     temp.push('thirdparty-tracking');
   }
 
-  var alert4 = document.getElementById("thidparty-collection");
+  var alert4 = document.getElementById("thirdparty-collection");
   if(alert4.checked){
     temp.push('thirdparty-collection');
   }

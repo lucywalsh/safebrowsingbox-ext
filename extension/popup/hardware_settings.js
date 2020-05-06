@@ -26,7 +26,7 @@ let createModeSelect = function(current_mode_setting){
 var alert_dict = {
   "Firstparty-tracking":"First-party Tracking",
   "Thirdparty-collection":"Third-party Collection",
-  "Targeted-ads","Targeted Advertising",
+  "Targeted-ads":"Targeted Advertising",
   "Personalisation":"Site Personalisation",
   "Thirdparty-tracking":"Third-party Tracking",
   "Location":"Location Information",

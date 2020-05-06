@@ -53,7 +53,7 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
 var alert_dict = {
   "Firstparty-tracking":"First-party Tracking",
   "Thirdparty-collection":"Third-party Collection",
-  "Targeted-ads","Targeted Advertising",
+  "Targeted-ads":"Targeted Advertising",
   "Personalisation":"Site Personalisation",
   "Thirdparty-tracking":"Third-party Tracking",
   "Location":"Location Information",
