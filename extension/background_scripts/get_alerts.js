@@ -98,11 +98,11 @@ var analyse_policy = function(currentHost,content){
     console.log("Received: " + response);
     alerts = JSON.stringify(response);
     alerts = alerts.split(",");
-    current_alerts = []
+    current_alerts = [];
     for(i=0;i<alerts.length;i=i+1){
       alert = alerts[i].replace("[","");
       alert = alert.replace("]","");
-      alert = alert.trim();
+      alert = alert.slice(1, -1);
       current_alerts.push(alert);
     }
     console.log("Current alerts:"+current_alerts);
