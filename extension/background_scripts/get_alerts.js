@@ -20,48 +20,43 @@ socket.on('connect', function() {
 /* set default alert settings */
 default_alerts = {
   "alertSettings": [
-    "user-profiling",
-    "targeted-advertising",
-    "thirdparty-tracking",
-    "data-collection",
-    "sensitive",
-    "financial",
-    "expected-use",
-    "unencrypted-comms",
-    "access-to-comms",
-    "data-sharing",
-    "law-enforcement",
-    "advertisers",
-    "researchers",
-    "location",
-    "browser-fingerprinting"
+    "Firstparty-tracking",
+    "Thirdparty-collection",
+    "Targeted-ads",
+    "Personalisation",
+    "Thirdparty-tracking",
+    "Location",
+    "Financial",
+    "Personal",
+    "DoNotTrack",
+    "Health"
   ]
 }
 
 hardware_settings = {};
-hardware_settings['user-profiling'] = "LED";
-hardware_settings['targeted-advertising'] = "LED";
-hardware_settings['thirdparty-tracking'] = "LED";
-hardware_settings['data-collection'] = "LED";
-hardware_settings['expected-use'] = "LED";
-hardware_settings['unencrypted-comms'] = "LED";
-hardware_settings['access-to-comms'] = "LED";
-hardware_settings['data-sharing'] = "LED";
-hardware_settings['location'] = "LED";
-hardware_settings['browser-fingerprinting'] = "LED";
+hardware_settings['Firstparty-tracking'] = "LED";
+hardware_settings['Thirdparty-collection'] = "LED";
+hardware_settings['Targeted-ads'] = "LED";
+hardware_settings['Personalisation'] = "LED";
+hardware_settings['Thirdparty-tracking'] = "LED";
+hardware_settings['Location'] = "LED";
+hardware_settings['Financial'] = "LED";
+hardware_settings['Personal'] = "LED";
+hardware_settings['DoNotTrack'] = "LED";
+hardware_settings['Health'] = "LED";
 default_hardware = {"hardwareSettings":hardware_settings}
 
 customise_settings = {};
-customise_settings['user-profiling'] = "Red";
-customise_settings['targeted-advertising'] = "Red";
-customise_settings['thirdparty-tracking'] = "Red";
-customise_settings['data-collection'] = "Red";
-customise_settings['expected-use'] = "Red";
-customise_settings['unencrypted-comms'] = "Red";
-customise_settings['access-to-comms'] = "Red";
-customise_settings['data-sharing'] = "Red";
-customise_settings['location'] = "Red";
-customise_settings['browser-fingerprinting'] = "Red";
+customise_settings['Firstparty-tracking'] = "Red";
+customise_settings['Thirdparty-collection'] = "Red";
+customise_settings['Targeted-ads'] = "Red";
+customise_settings['Personalisation'] = "Red";
+customise_settings['Thirdparty-tracking'] = "Red";
+customise_settings['Location'] = "Red";
+customise_settings['Financial'] = "Red";
+customise_settings['Personal'] = "Red";
+customise_settings['DoNotTrack'] = "Red";
+customise_settings['Health'] = "Red";
 default_customise = {"customiseSettings":customise_settings}
 
 browser.storage.local.set(default_alerts);
