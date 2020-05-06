@@ -13,14 +13,14 @@ window.addEventListener('load',(event) => {
 document.getElementById("save").onclick = function save_data(){
   var temp = [];
 
-  var alert1 = document.getElementById("user-profiling");
+  var alert1 = document.getElementById("firstparty-tracking");
   if(alert1.checked){
-    temp.push('user-profiling');
+    temp.push('firstparty-tracking');
   }
 
-  var alert2 = document.getElementById("targeted-advertising");
+  var alert2 = document.getElementById("targeted-ads");
   if(alert2.checked){
-    temp.push('targeted-advertising');
+    temp.push('targeted-ads');
   }
 
   var alert3 = document.getElementById("thirdparty-tracking");
@@ -28,64 +28,39 @@ document.getElementById("save").onclick = function save_data(){
     temp.push('thirdparty-tracking');
   }
 
-  var alert4 = document.getElementById("data-collection");
+  var alert4 = document.getElementById("thidparty-collection");
   if(alert4.checked){
-    temp.push('data-collection');
+    temp.push('thirdparty-collection');
   }
 
-  var alert4_2 = document.getElementById("sensitive");
-  if(alert4_2.checked){
-    temp.push('sensitive');
+  var alert5 = document.getElementById("personal");
+  if(alert5.checked){
+    temp.push('personal');
   }
 
-  var alert4_3 = document.getElementById("financial");
-  if(alert4_3.checked){
+  var alert6 = document.getElementById("financial");
+  if(alert6.checked){
     temp.push('financial');
   }
 
-  var alert5 = document.getElementById("unencrypted-comms");
-  if(alert5.checked){
-    temp.push('unencrypted-comms');
-  }
-
-  var alert6 = document.getElementById("access-to-comms");
-  if(alert6.checked){
-    temp.push('access-to-comms');
-  }
-
-  var alert7 = document.getElementById("data-sharing");
+  var alert7 = document.getElementById("personalisation");
   if(alert7.checked){
-    temp.push('data-sharing');
+    temp.push('personalisation');
   }
 
-  var alert7_1 = document.getElementById("law-enforcement");
-  if(alert7_1.checked){
-    temp.push('law-enforcement');
-  }
-
-  var alert7_2 = document.getElementById("advertisers");
-  if(alert7_2.checked){
-    temp.push('advertisers');
-  }
-
-  var alert7_3 = document.getElementById("researchers");
-  if(alert7_3.checked){
-    temp.push('researchers');
-  }
-
-  var alert8 = document.getElementById("expected-use");
+  var alert8 = document.getElementById("donottrack");
   if(alert8.checked){
-    temp.push('expected-use');
+    temp.push('donottrack');
   }
 
-  var alert9 = document.getElementById("location");
+  var alert9 = document.getElementById("health");
   if(alert9.checked){
-    temp.push('location');
+    temp.push('health');
   }
 
-  var alert10 = document.getElementById("browser-fingerprinting");
+  var alert10 = document.getElementById("location");
   if(alert10.checked){
-    temp.push('browser-fingerprinting');
+    temp.push('location');
   }
 
   var temp2 = {};
