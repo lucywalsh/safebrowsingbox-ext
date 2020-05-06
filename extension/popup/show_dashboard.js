@@ -98,7 +98,7 @@ browser.tabs.query({currentWindow: true, active: true})
         else{
           this_host_alerts = Object.values(item);
           //no policy found
-          if(this_host_alerts[0]=='NA'){
+          if(this_host_alerts[0]=='NA' || this_host_alerts[0]==""){
             var no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
             alertsnode.appendChild(no_policy_text);
             var analyse_button = document.createElement("button");
