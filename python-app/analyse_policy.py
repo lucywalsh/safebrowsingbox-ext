@@ -93,6 +93,9 @@ def sendMessage(encodedMessage):
 
 while True:
     receivedMessage = getMessage()
-    page_content = get_page_content(receivedMessage)
-    labels = infer_labels(page_content)
-    sendMessage(encodeMessage(labels))
+    try:
+        page_content = get_page_content(receivedMessage)
+        labels = infer_labels(page_content)
+        sendMessage(encodeMessage(labels))
+    except:
+        sendMessage(encodeMessage(""))
