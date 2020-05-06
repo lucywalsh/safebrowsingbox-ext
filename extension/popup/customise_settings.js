@@ -51,17 +51,16 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
 }
 
 var alert_dict = {
-  'user-profiling':'User Profiling',
-  'targeted-advertising':'Targeted Advertising',
-  'thirdparty-tracking':'Third Party Tracking',
-  'data-collection':'Personal Data Collection',
-  'data-sharing':'Data Sharing with Third Parties',
-  'unencrypted-comms':'Unencrypted Communications',
-  'access-to-comms':"Access to Communications",
-  'data-retention':'Indefinite Data Retention',
-  'expected-use':'Expected Use',
-  'location':'Location Information',
-  'browser-fingerprinting':'Browser Fingerprinting'
+  "Firstparty-tracking":"First-party Tracking",
+  "Thirdparty-collection":"Third-party Collection",
+  "Targeted-ads","Targeted Advertising",
+  "Personalisation":"Site Personalisation",
+  "Thirdparty-tracking":"Third-party Tracking",
+  "Location":"Location Information",
+  "Financial":"Financial Information",
+  "Personal":"Personal Information",
+  "DoNotTrack":"Do Not Track Headers Ignored",
+  "Health":"Health Information"
 }
 
 table = document.getElementById("customise-settings");
