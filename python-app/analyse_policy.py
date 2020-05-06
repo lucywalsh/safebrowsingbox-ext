@@ -29,9 +29,9 @@ alerts = ["Firstparty-tracking",
 "Targeted-ads",
 "Personalisation",
 "Thirdparty-tracking",
-"Minors",
 "Location",
 "Financial",
+"Personal",
 "DoNotTrack",
 "Health"]
 
