@@ -20,43 +20,43 @@ socket.on('connect', function() {
 /* set default alert settings */
 default_alerts = {
   "alertSettings": [
-    "Firstparty-tracking",
-    "Thirdparty-collection",
-    "Targeted-ads",
-    "Personalisation",
-    "Thirdparty-tracking",
-    "Location",
-    "Financial",
-    "Personal",
-    "DoNotTrack",
-    "Health"
+    "firstparty-tracking",
+    "thirdparty-collection",
+    "targeted-ads",
+    "personalisation",
+    "thirdparty-tracking",
+    "location",
+    "financial",
+    "personal",
+    "donottrack",
+    "health"
   ]
 }
 
 hardware_settings = {};
-hardware_settings['Firstparty-tracking'] = "LED";
-hardware_settings['Thirdparty-collection'] = "LED";
-hardware_settings['Targeted-ads'] = "LED";
-hardware_settings['Personalisation'] = "LED";
-hardware_settings['Thirdparty-tracking'] = "LED";
-hardware_settings['Location'] = "LED";
-hardware_settings['Financial'] = "LED";
-hardware_settings['Personal'] = "LED";
-hardware_settings['DoNotTrack'] = "LED";
-hardware_settings['Health'] = "LED";
+hardware_settings['firstparty-tracking'] = "LED";
+hardware_settings['thirdparty-collection'] = "LED";
+hardware_settings['targeted-ads'] = "LED";
+hardware_settings['personalisation'] = "LED";
+hardware_settings['thirdparty-tracking'] = "LED";
+hardware_settings['location'] = "LED";
+hardware_settings['financial'] = "LED";
+hardware_settings['personal'] = "LED";
+hardware_settings['donottrack'] = "LED";
+hardware_settings['health'] = "LED";
 default_hardware = {"hardwareSettings":hardware_settings}
 
 customise_settings = {};
-customise_settings['Firstparty-tracking'] = "Red";
-customise_settings['Thirdparty-collection'] = "Red";
-customise_settings['Targeted-ads'] = "Red";
-customise_settings['Personalisation'] = "Red";
-customise_settings['Thirdparty-tracking'] = "Red";
-customise_settings['Location'] = "Red";
-customise_settings['Financial'] = "Red";
-customise_settings['Personal'] = "Red";
-customise_settings['DoNotTrack'] = "Red";
-customise_settings['Health'] = "Red";
+customise_settings['firstparty-tracking'] = "Red";
+customise_settings['thirdparty-collection'] = "Red";
+customise_settings['targeted-ads'] = "Red";
+customise_settings['personalisation'] = "Red";
+customise_settings['thirdparty-tracking'] = "Red";
+customise_settings['location'] = "Red";
+customise_settings['financial'] = "Red";
+customise_settings['personal'] = "Red";
+customise_settings['donottrack'] = "Red";
+customise_settings['health'] = "Red";
 default_customise = {"customiseSettings":customise_settings}
 
 browser.storage.local.set(default_alerts);
