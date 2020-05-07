@@ -1,4 +1,4 @@
-settings = ["access-to-comms","browser-fingerprinting","data-collection","data-sharing","expected-use","location","targeted-advertising","thirdparty-tracking","unencrypted-comms","user-profiling"];
+settings = ["firstparty-tracking","thirdparty-collection","targeted-ads","tersonalisation","thirdparty-tracking","tocation","tinancial","tersonal","donottrack","health"];
 
 let createCustomiseSelect = function(current_mode_setting,current_customise_setting){
   let select_customise = document.createElement('select');
@@ -51,16 +51,16 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
 }
 
 var alert_dict = {
-  "Firstparty-tracking":"First-party Tracking",
-  "Thirdparty-collection":"Third-party Collection",
-  "Targeted-ads":"Targeted Advertising",
-  "Personalisation":"Site Personalisation",
-  "Thirdparty-tracking":"Third-party Tracking",
-  "Location":"Location Information",
-  "Financial":"Financial Information",
-  "Personal":"Personal Information",
-  "DoNotTrack":"Do Not Track Headers Ignored",
-  "Health":"Health Information"
+  "firstparty-tracking":"First-party Tracking",
+  "thirdparty-collection":"Third-party Collection",
+  "targeted-ads":"Targeted Advertising",
+  "personalisation":"Site Personalisation",
+  "thirdparty-tracking":"Third-party Tracking",
+  "location":"Location Information",
+  "financial":"Financial Information",
+  "personal":"Personal Information",
+  "donottrack":"Do Not Track Headers Ignored",
+  "health":"Health Information"
 }
 
 table = document.getElementById("customise-settings");
