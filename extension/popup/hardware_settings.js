@@ -40,16 +40,13 @@ table = document.getElementById("hardware-settings");
 
 browser.storage.local.get().then(function(item){
   set_alerts = item['alertSettings'];
-  console.log(set_alerts);
   hardware_settings = item['hardwareSettings'];
-  console.log(hardware_settings);
 
   //insert row into table for each alert
   for (i=0;i<set_alerts.length;i++){
     alert_id = set_alerts[i];
     //look-up alert id
     alert_name = alert_dict[alert_id];
-    console.log(alert_name);
 
     if(alert_name!=undefined){
 
@@ -59,7 +56,6 @@ browser.storage.local.get().then(function(item){
       for(j=0;j<Object.keys(hardware_settings).length;j++){
         if(Object.keys(hardware_settings)[j]==alert_id){
           current_mode_setting = Object.values(hardware_settings)[j];
-          console.log(current_mode_setting);
         }
       };
       //create elements
