@@ -14,7 +14,7 @@ window.addEventListener('load',(event) => {
 document.getElementById("save_customise").onclick = function save_customise_data(){
   var customise_settings = {};
 
-  var userprofiling_customise = document.getElementById("firstpartytracking_customisedropdown");
+  var userprofiling_customise = document.getElementById("firstparty-tracking_customisedropdown");
   if(userprofiling_customise != null){
     customise_settings['firstparty-tracking'] = userprofiling_customise.value;
   }
@@ -24,7 +24,7 @@ document.getElementById("save_customise").onclick = function save_customise_data
     customise_settings['targeted-ads'] = targetedadvertising_customise.value;
   }
 
-  var datasharing_customise = document.getElementById("thirdpartycollection_customisedropdown");
+  var datasharing_customise = document.getElementById("thirdparty-collection_customisedropdown");
   if(datasharing_customise != null){
     customise_settings['thirdparty-collection'] = datasharing_customise.value;
   }
