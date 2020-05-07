@@ -246,3 +246,14 @@ browser.tabs.onUpdated.addListener(function(tabId, changeInfo, tabInfo){
         });
     }
 });
+
+/*
+function handleMessage(request, sender, sendResponse) {
+    console.log("SENDING:");
+    console.log(request.method,request.test_val);
+    socket.emit(request.method,{data:request.test_val});
+
+}
+
+browser.runtime.onMessage.addListener(handleMessage);
+*/

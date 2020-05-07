@@ -1,5 +1,6 @@
 settings = ["firstparty-tracking","thirdparty-collection","targeted-ads","tersonalisation","thirdparty-tracking","tocation","tinancial","tersonal","donottrack","health"];
 
+/*
 let createCustomiseSelect = function(current_mode_setting,current_customise_setting){
   let select_customise = document.createElement('select');
   var options = [];
@@ -49,6 +50,57 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
   select_customise.id = alert_id+"_customisedropdown";
   return select_customise;
 }
+*/
+let createCustomiseSelect = function(current_mode_setting,current_customise_setting){
+  if(current_mode_setting == 'LED'){
+    let color_selector = document.createElement('input');
+    color_selector.type = "color";
+    color_selector.value = current_customise_setting;
+    color_selector.id = alert_id+"_customisedropdown";
+    return color_selector;
+  }
+  if(current_mode_setting == 'Sound'){
+    let sound_selector = document.createElement('select');
+    let option1 = document.createElement("option");
+    let option2 = document.createElement("option");
+    let option3 = document.createElement("option");
+    let option4 = document.createElement("option");
+    let option5 = document.createElement("option");
+    option1.value = "a5";
+    option1.innerHTML = "Play an A note";
+    option2.value = "b5";
+    option2.innerHTML = "Play a B note";
+    option3.value = "c4";
+    option3.innerHTML = "Play a C note";
+    option4.value = "d5";
+    option4.innerHTML = "Play a D note";
+    option5.value = "e4";
+    option5.innerHTML = "Play an E note";
+    sound_selector.appendChild(option1);
+    sound_selector.appendChild(option2);
+    sound_selector.appendChild(option3);
+    sound_selector.appendChild(option4);
+    sound_selector.appendChild(option5);
+    sound_selector.value = current_customise_setting;
+    sound_selector.id = alert_id+"_customisedropdown";
+    return sound_selector;
+  }
+  if(current_mode_setting == 'Movement'){
+    let movement_selector = document.createElement('select');
+    let option1 = document.createElement("option");
+    let option2 = document.createElement("option");
+    option1.value = "left";
+    option1.innerHTML = "Spin Left";
+    option2.value = "right";
+    option2.innerHTML = "Spin Right";
+    movement_selector.appendChild(option1);
+    movement_selector.appendChild(option2);
+    movement_selector.value = current_customise_setting;
+    movement_selector.id = alert_id+"_customisedropdown";
+    return movement_selector;
+  }
+}
+
 
 var alert_dict = {
   "firstparty-tracking":"First-party Tracking",
@@ -65,7 +117,18 @@ var alert_dict = {
 
 table = document.getElementById("customise-settings");
 
+/*
+function onclickfunction(clicked_id){
+  console.log(clicked_id);
 
+  method = document.getElementById(clicked_id+"_modetext").innerHTML;
+  test_val = document.getElementById(clicked_id+"_customisedropdown").value;
+  var sending = browser.runtime.sendMessage({
+    method:method,
+    test_val: test_val
+  });
+};
+*/
 browser.storage.local.get().then(function(item){
   set_alerts = item['alertSettings'];
   hardware_settings = item['hardwareSettings']
@@ -107,16 +170,26 @@ browser.storage.local.get().then(function(item){
       mode_cell.innerHTML = current_mode_setting;
       customise_cell = document.createElement("td");
       customise_cell.id = alert_id+"_customise";
+      //test_cell = document.createElement("td");
+      //test_cell.id = alert_id+"_test";
 
-      //use current alert settings to make button element
-      //create drop down to choose customisation
+      //create element to choose customisation
       select_customise = createCustomiseSelect(current_mode_setting,current_customise_setting);
       //add customise drop down to customise cell
       customise_cell.appendChild(select_customise);
+      //add button to test cell
+      /*
+      test_button = document.createElement("Button");
+      test_button.id = alert_id;
+      test_button.onclick = onclickfunction(test_button.id);
+      test_button.innerHTML = "Test"
+      test_cell.appendChild(test_button);
+      */
       //add elements to table
       row.appendChild(alert);
       row.appendChild(mode_cell);
       row.appendChild(customise_cell);
+      //row.appendChild(test_cell);
       table.appendChild(row);
 
     }
