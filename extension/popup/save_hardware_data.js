@@ -50,12 +50,12 @@ document.getElementById("save_hardware").onclick = function save_hardware_data()
 
   var datacollection_mode = document.getElementById("personalisation_modedropdown");
   if(datacollection_mode != null){
-    hardware_settings['personlisation'] = datacollection_mode.value;
+    hardware_settings['personalisation'] = datacollection_mode.value;
   }
 
-  var unencryptedcomms_mode = document.getElementById("thirdparty-tracking_modedropdown");
+  var unencryptedcomms_mode = document.getElementById("thirdparty-collection_modedropdown");
   if(unencryptedcomms_mode != null){
-    hardware_settings['thirdparty-tracking'] = unencryptedcomms_mode.value;
+    hardware_settings['thirdparty-collection'] = unencryptedcomms_mode.value;
   }
 
   var accesstocomms_mode = document.getElementById("financial_modedropdown");

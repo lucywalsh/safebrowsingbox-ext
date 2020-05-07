@@ -1,4 +1,4 @@
-settings = ["access-to-comms","browser-fingerprinting","data-collection","data-sharing","expected-use","location","targeted-advertising","thirdparty-tracking","unencrypted-comms","user-profiling"];
+settings = ["firstparty-tracking","thirdparty-collection","targeted-ads","tersonalisation","thirdparty-tracking","tocation","tinancial","tersonal","donottrack","health"];
 
 let createModeSelect = function(current_mode_setting){
   let select_mode = document.createElement('select');
@@ -24,38 +24,42 @@ let createModeSelect = function(current_mode_setting){
 //get which alerts the user wants
 
 var alert_dict = {
-  "Firstparty-tracking":"First-party Tracking",
-  "Thirdparty-collection":"Third-party Collection",
-  "Targeted-ads":"Targeted Advertising",
-  "Personalisation":"Site Personalisation",
-  "Thirdparty-tracking":"Third-party Tracking",
-  "Location":"Location Information",
-  "Financial":"Financial Information",
-  "Personal":"Personal Information",
-  "DoNotTrack":"Do Not Track Headers Ignored",
-  "Health":"Health Information"
+  "firstparty-tracking":"First-party Tracking",
+  "thirdparty-collection":"Third-party Collection",
+  "targeted-ads":"Targeted Advertising",
+  "personalisation":"Site Personalisation",
+  "thirdparty-tracking":"Third-party Tracking",
+  "location":"Location Information",
+  "financial":"Financial Information",
+  "personal":"Personal Information",
+  "donottrack":"Do Not Track Headers Ignored",
+  "health":"Health Information"
 }
 
 table = document.getElementById("hardware-settings");
 
 browser.storage.local.get().then(function(item){
   set_alerts = item['alertSettings'];
+  console.log(set_alerts);
   hardware_settings = item['hardwareSettings'];
+  console.log(hardware_settings);
 
   //insert row into table for each alert
   for (i=0;i<set_alerts.length;i++){
     alert_id = set_alerts[i];
     //look-up alert id
     alert_name = alert_dict[alert_id];
+    console.log(alert_name);
 
     if(alert_name!=undefined){
 
       //find current settings for that alert
       current_mode_setting = "";
 
-      for(j=0;j<hardware_settings.length;j++){
-        if(Object.keys(hardware_settings[j])==alert_id){
-          current_mode_setting = Object.values(hardware_settings[j]);
+      for(j=0;j<Object.keys(hardware_settings).length;j++){
+        if(Object.keys(hardware_settings)[j]==alert_id){
+          current_mode_setting = Object.values(hardware_settings)[j];
+          console.log(current_mode_setting);
         }
       };
       //create elements
