@@ -47,16 +47,16 @@ hardware_settings['health'] = "LED";
 default_hardware = {"hardwareSettings":hardware_settings}
 
 customise_settings = {};
-customise_settings['firstparty-tracking'] = "Red";
-customise_settings['thirdparty-collection'] = "Red";
-customise_settings['targeted-ads'] = "Red";
-customise_settings['personalisation'] = "Red";
-customise_settings['thirdparty-tracking'] = "Red";
-customise_settings['location'] = "Red";
-customise_settings['financial'] = "Red";
-customise_settings['personal'] = "Red";
-customise_settings['donottrack'] = "Red";
-customise_settings['health'] = "Red";
+customise_settings['firstparty-tracking'] = "#ff0000";
+customise_settings['thirdparty-collection'] = "#ff0000";
+customise_settings['targeted-ads'] = "#ff0000";
+customise_settings['personalisation'] = "#ff0000";
+customise_settings['thirdparty-tracking'] = "#ff0000";
+customise_settings['location'] = "#ff0000";
+customise_settings['financial'] = "#ff0000";
+customise_settings['personal'] = "#ff0000";
+customise_settings['donottrack'] = "#ff0000";
+customise_settings['health'] = "#ff0000";
 default_customise = {"customiseSettings":customise_settings}
 
 browser.storage.local.set(default_alerts);
