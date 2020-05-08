@@ -62,6 +62,7 @@ browser.storage.local.get().then(function(item){
       row = document.createElement("tr");
       row.style = "padding:10px";
       alert = document.createElement("td");
+      alert.style="padding-bottom:10px";
       alert.innerHTML = alert_name;
       mode_cell = document.createElement("td");
       mode_cell.id = alert_id+"_mode";

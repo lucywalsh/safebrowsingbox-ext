@@ -165,6 +165,7 @@ browser.storage.local.get().then(function(item){
       row.style = "padding:10px";
       alert = document.createElement("td");
       alert.innerHTML = alert_name;
+      alert.style="padding-bottom:10px";
       mode_cell = document.createElement("td");
       mode_cell.id = alert_id+"_modetext";
       mode_cell.innerHTML = current_mode_setting;
