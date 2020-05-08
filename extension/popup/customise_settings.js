@@ -57,6 +57,7 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
     color_selector.type = "color";
     color_selector.value = current_customise_setting;
     color_selector.id = alert_id+"_customisedropdown";
+    color_selector.style="border:none;background-color:white";
     return color_selector;
   }
   if(current_mode_setting == 'Sound'){
@@ -83,6 +84,7 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
     sound_selector.appendChild(option5);
     sound_selector.value = current_customise_setting;
     sound_selector.id = alert_id+"_customisedropdown";
+    sound_selector.style = "color:#60666d;font-size:12px;text-align:center;height:25px";
     return sound_selector;
   }
   if(current_mode_setting == 'Movement'){
@@ -97,6 +99,7 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
     movement_selector.appendChild(option2);
     movement_selector.value = current_customise_setting;
     movement_selector.id = alert_id+"_customisedropdown";
+    movement_selector.style = "color:#60666d;font-size:12px;text-align:center;height:25px";
     return movement_selector;
   }
 }

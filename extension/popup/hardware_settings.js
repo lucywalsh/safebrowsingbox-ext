@@ -18,6 +18,7 @@ let createModeSelect = function(current_mode_setting){
   select_mode.value = current_mode_setting;
   //set id
   select_mode.id = alert_id+"_modedropdown";
+  select_mode.style = "color:#60666d;font-size:12px;text-align:center;height:25px"
   return select_mode;
 }
 
