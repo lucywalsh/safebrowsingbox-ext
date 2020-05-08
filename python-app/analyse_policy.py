@@ -11,10 +11,10 @@ import re
 #loading pre-trained models etc.
 from joblib import dump,load
 
-#load model trained on >100 privacy policies
+#load pre-trained model
 clf = load('trained_logreg_2.joblib')
 
-#load TF-IDF Vectorizer to create numerical vectors from textarea
+#load TF-IDF Vectorizer to create numerical vectors from policy segments
 tfidf_vectorizer = load('tfidf_vectorizer_2.joblib')
 
 #load multilabel_binarizer fit on training data to translate labels
@@ -56,12 +56,17 @@ def get_page_content(url):
     return output
 
 def clean_text(text):
+    #lowercase text
     text=text.lower()
+    #remove non-alphabet characters e.g. numbers, punctuation
     text = re.sub("[^a-zA-Z]"," ",text)
+    #strip whitespace
     text=text.strip()
+    #remove stop words
     no_stopword_text = [w for w in text.split() if not w in stop_words]
     #remove single chars
     text = [w for w in no_stopword_text if len(w)>1]
+    #join words back into a string
     text = ' '.join(text)
     return text
 
@@ -70,11 +75,11 @@ def infer_labels(page_content):
     for policy_segment in page_content:
         #clean text
         processed_segment = clean_text(policy_segment)
-        #create features
+        #create features i.e. numerical vector
         features = tfidf_vectorizer.transform([processed_segment])
         #predict labels using trained model
         predictions = clf.predict(features)
-        #get labels from prediction
+        #retrieve unique labels that we are interested in from the predictions
         predicted_labels = multilabel_binarizer.inverse_transform(predictions)
         for labels_tuple in predicted_labels:
             for label in labels_tuple:
@@ -106,8 +111,11 @@ def sendMessage(encodedMessage):
 while True:
     receivedMessage = getMessage()
     try:
+        #scrape text from policy webpage
         page_content = get_page_content(receivedMessage)
+        #get predicted labels
         labels = infer_labels(page_content)
+        #send labels back to extension
         sendMessage(encodeMessage(labels))
     except:
         sendMessage(encodeMessage(""))

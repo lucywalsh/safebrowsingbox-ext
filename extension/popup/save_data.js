@@ -1,7 +1,6 @@
-//set previously saved settings as checked
+//set previously saved settings as checked in UI
 window.addEventListener('load',(event) => {
   browser.storage.local.get('alertSettings').then(function(item){
-    //console.log(Object.values(item)[0]);
     prev_settings = Object.values(item)[0];
     for(i=0;i<prev_settings.length;i++){
       document.getElementById(prev_settings[i]).checked=true;
@@ -9,7 +8,7 @@ window.addEventListener('load',(event) => {
   })
 });
 
-//save new settings
+/* Code to retrieve the user's customsiation choices and save in local storage */
 document.getElementById("save").onclick = function save_data(){
   var temp = [];
 
@@ -64,16 +63,11 @@ document.getElementById("save").onclick = function save_data(){
   }
 
   var temp2 = {};
+  //save in local storage
   temp2['alertSettings'] = temp;
   browser.storage.local.set(temp2).then(function(){
-    //navigate to hardware settings
+    //navigate to next settings page
     browser.tabs.update({url: "hardware_settings.html"})
   });
 
-  //close tab
-  /*
-  browser.tabs.query({currentWindow: true, active: true}).then( (tabs) => {
-    browser.tabs.remove(tabs[0].id);
-  });
-  */
 }

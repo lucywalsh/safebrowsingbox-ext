@@ -1,35 +1,4 @@
-
-//set previously saved settings as checked
-/*
-window.addEventListener('load',(event) => {
-  browser.storage.local.get('hardwareSettings').then(function(item){
-    prev_settings = Object.values(item)[0];
-    //change this code to update previous settings
-    for(i=0;i<settings.length;i++){
-      console.log(settings[i]);
-      var checkbox = document.getElementById(settings[i]+"_modedropdown");
-      var prev_value = prev_settings[settings[i]];
-      if(prev_value != undefined){
-        box.value = prev_value;
-      }
-    }
-  })
-});
-*/
-
-var alert_dict = {
-  "Firstparty-tracking":"First-party Tracking",
-  "Thirdparty-collection":"Third-party Collection",
-  "Targeted-ads":"Targeted Advertising",
-  "Personalisation":"Site Personalisation",
-  "Thirdparty-tracking":"Third-party Tracking",
-  "Location":"Location Information",
-  "Financial":"Financial Information",
-  "Personal":"Personal Information",
-  "DoNotTrack":"Do Not Track Headers Ignored",
-  "Health":"Health Information"
-}
-
+/* Code to get user's customisation choices and save in local storage */
 document.getElementById("save_hardware").onclick = function save_hardware_data(){
   var hardware_settings = {};
 
@@ -82,14 +51,12 @@ document.getElementById("save_hardware").onclick = function save_hardware_data()
   if(browserfingerprinting_mode != null){
     hardware_settings['personal'] = browserfingerprinting_mode.value;
   }
-
+  //save in local storage
   var temp = {};
   temp['hardwareSettings'] = hardware_settings;
   browser.storage.local.set(temp).then(function(){
-    //navigate to customise settings
+    //navigate to the next settings page
     browser.tabs.update({url: "customise_settings.html"});
-
-    //document.getElementById("saved-message").appendChild(document.createTextNode("Saved! You can now close this tab\n"));
   });
 
 }

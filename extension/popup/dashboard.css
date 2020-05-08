@@ -1,3 +1,4 @@
+/* set size of extension window */
 html, body {
   width: 450px;
   padding:10px;
@@ -6,16 +7,19 @@ html, body {
   overflow: hidden;
 }
 
+/* remove styling from links */
 a{
   color:black;
   text-decoration:none;
 }
 
+/* recolor help button */
 .help-button{
   color:gray;
   text-decoration:none;
 }
 
+/* set shape and size of alerts in dashboard */
 .alert-div{
   padding:10px;
   margin:10px;
@@ -24,15 +28,51 @@ a{
   cursor:pointer;
 }
 
+/* set size of explanation popup */
 .explanation{
   width:400px;
 }
 
+/* Table Styling */
 .advice-col{
   padding: 0 10px 0 10px;
   text-align: center;
   width:120px;
 }
+
+/* Styling for icon buttons i.e. setting and help buttons on dashboard */
+.icon-btn {
+  background-color: white;
+  border: none;
+  color: gray;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.icon-btn:hover {
+  color:black;
+}
+
+/* styling for Analyse button on dashboard */
+.styled-button{
+  background-color: white;
+  color;black;
+  border-radius: 5px;
+  border:1px solid gray;
+  cursor:pointer;
+  padding: 10px 16px;
+  font-size:16px
+}
+
+.button {
+  margin: 3% auto;
+  padding: 4px;
+  text-align: center;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* Misc Styling */
 
 .advice-text{
   text-align:center;
@@ -47,40 +87,6 @@ a{
   display: none;
 }
 
-.button {
-  margin: 3% auto;
-  padding: 4px;
-  text-align: center;
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
 .title{
   font-family:"Arial"
 }
-
-.styled-button{
-  background-color: white;
-  color;black;
-  border-radius: 5px;
-  border:1px solid gray;
-  cursor:pointer;
-  padding: 10px 16px;
-  font-size:16px
-}
-
-/* Style buttons */
-.icon-btn {
-  background-color: white; /* Blue background */
-  border: none; /* Remove borders */
-  color: gray; /* White text */
-  font-size: 24px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
-}
-
-/* Darker background on mouse-over */
-.icon-btn:hover {
-  color:black;
-}
-
-/****** COLOR STYLING FOR ALERT DIVS *******/

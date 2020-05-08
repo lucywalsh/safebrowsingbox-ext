@@ -1,3 +1,5 @@
+/* Listeners to handle pop-ups that appear when user hovers over question marks on Settings page */
+
 var firstpartytracking_button = document.getElementById("help-firstpartytracking");
 var firstpartytracking_explanation = document.getElementById("firstpartytracking-explanation");
 firstpartytracking_button.addEventListener('mouseenter', function(){

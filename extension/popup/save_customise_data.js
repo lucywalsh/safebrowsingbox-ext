@@ -1,16 +1,11 @@
-//set previously saved settings as checked
+//set previously saved settings as checked in UI
 window.addEventListener('load',(event) => {
   browser.storage.local.get('customiseSettings').then(function(item){
     prev_settings = Object.values(item)[0];
-    //change this code to update previous settings
-    /*
-    for(i=0;i<prev_settings.length;i++){
-      document.getElementById(prev_settings[i]).checked=true;
-    }
-    */
   })
 });
 
+/* Code to retrieve the user's customisation choices and save in local storage */
 document.getElementById("save_customise").onclick = function save_customise_data(){
   var customise_settings = {};
 
@@ -67,7 +62,7 @@ document.getElementById("save_customise").onclick = function save_customise_data
   var temp = {};
   temp['customiseSettings'] = customise_settings;
   browser.storage.local.set(temp).then(function(){
-    //tell user information is saved
+    //provide feedback - tell user information is saved
     document.getElementById("saved-message").appendChild(document.createTextNode("Saved! You can now close this tab\n"));
   });
 
