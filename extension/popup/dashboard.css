@@ -6,12 +6,32 @@ html, body {
   overflow: hidden;
 }
 
+a{
+  color:black;
+  text-decoration:none;
+}
+
 .alert-div{
   padding:10px;
   margin:10px;
-  width:300px;
+  width:380px;
   border-radius: 5px;
   cursor:pointer;
+}
+
+.explanation{
+  width:400px;
+}
+
+.advice-col{
+  padding: 0 10px 0 10px;
+  text-align: center;
+  width:120px;
+}
+
+.advice-text{
+  text-align:center;
+  font-size:12px
 }
 
 .header{
@@ -59,42 +79,3 @@ html, body {
 }
 
 /****** COLOR STYLING FOR ALERT DIVS *******/
-.financial{
-  background-color:#FCE4EC; /*pink*/
-}
-
-.personal{
-  background-color:#F3E5F5; /*purple*/
-}
-
-.health{
-  background-color:#E3F2FD; /*blue*/
-}
-
-.targeted-ads{
-  background-color:#E8F5E9; /*green*/
-}
-
-.thirdparty-tracking{
-  background-color:#FBE9E7; /*orange*/
-}
-
-.thirdparty-collection{
-  background-color:#FFFDE7; /*yellow*/
-}
-
-.personalisation{
-  background-color:#E0F2F1; /*teal*/
-}
-
-.donottrack{
-  background-color:#F5F5F5; /*grey*/
-}
-
-.firstparty-tracking{
-  background-color:#F9FBE7; /*lime green*/
-}
-
-.location{
-  background-color:#FFEBEE; /*red*/
-}

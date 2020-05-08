@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="300"
+   viewBox="0 0 300 300"
+   version="1.1"
+   id="svg13"
+   sodipodi:docname="nordvpn-square.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata17">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>nord-logo-square</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1137"
+     id="namedview15"
+     showgrid="false"
+     scale-x="1"
+     showborder="true"
+     inkscape:showpageshadow="true"
+     inkscape:pagecheckerboard="false"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:zoom="1.8541911"
+     inkscape:cx="311.52228"
+     inkscape:cy="120.60035"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg13">
+    <sodipodi:guide
+       position="1452.2034,76.271186"
+       orientation="0,1"
+       id="guide19"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="1055.5932,649.83051"
+       orientation="0,1"
+       id="guide21"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="713.89831,314.23729"
+       orientation="1,0"
+       id="guide23"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="9.1525424,326.44068"
+       orientation="1,0"
+       id="guide25"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">nord-logo-square</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs6" />
+  <g
+     id="nord-logo-square"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="matrix(0.40182517,0,0,0.40182517,-3.345479,1.484663)">
+    <g
+       id="global/logos/vertical/nordvpn"
+       transform="translate(46,84)">
+      <path
+         d="m 654.61894,467.86765 c -7.97109,0 -14.36894,-6.51177 -14.36894,-14.55883 0,-7.99411 6.39785,-14.55882 14.36894,-14.55882 7.97109,0 14.42138,6.56471 14.42138,14.55882 0,8.04706 -6.45029,14.55883 -14.42138,14.55883 z m 0,-26.47059 c -6.45029,0 -11.64199,5.29412 -11.64199,11.91176 0,6.61765 5.1917,11.91177 11.64199,11.91177 6.39785,0 11.69443,-5.29412 11.69443,-11.91177 0,-6.61764 -5.29658,-11.91176 -11.69443,-11.91176 z m -2.1501,14.24117 v 5.98236 h -3.40869 v -16.62353 h 6.50274 c 3.19892,0 5.87343,1.69412 5.87343,5.24117 0,2.48824 -1.31103,4.02354 -3.14648,4.76471 l 3.40869,6.61765 h -3.72334 l -2.98916,-5.98236 z m 5.50635,-5.29411 c 0,-1.64118 -1.36348,-2.06471 -2.67451,-2.06471 h -2.83184 v 4.12941 h 2.88428 c 1.25859,0 2.62207,-0.52941 2.62207,-2.0647 z"
+         id="®"
+         inkscape:connector-curvature="0"
+         style="fill:#373b42" />
+      <path
+         d="m 70.235,545.625 -48.6,-72.9 v 72.9 H 0.035 V 439.92 H 25.01 l 45.9,68.985 V 439.92 h 21.6 v 105.705 z m 35.86737,-35.91 c 0,-21.465 17.685,-37.8 39.555,-37.8 21.735,0 39.15,15.93 39.15,37.395 0,21.735 -17.685,37.935 -39.42,37.935 -21.87,0 -39.285,-15.795 -39.285,-37.53 z m 21.6,-0.27 c 0,10.935 7.965,18.495 17.82,18.495 9.855,0 17.685,-7.56 17.685,-18.495 0,-10.8 -7.965,-18.36 -17.82,-18.36 -9.855,0 -17.685,7.56 -17.685,18.36 z m 113.08737,-35.91 v 20.655 c -2.835,-0.54 -5.805,-0.54 -6.75,-0.54 -10.125,0 -17.145,7.02 -17.145,20.385 v 31.59 h -20.655 v -72.09 h 19.98 v 10.53 h 0.27 c 3.915,-8.235 11.205,-11.34 18.63,-11.34 1.62,0 4.185,0.405 5.67,0.81 z m 132.57473,72.09 -38.205,-105.705 h 23.625 l 27.405,80.325 27.54,-80.325 h 23.22 l -38.34,105.705 z m 151.42737,-71.82 c 0,23.355 -16.47,34.56 -38.61,34.56 h -16.605 v 37.26 h -21.87 V 439.92 h 39.285 c 21.195,0 37.8,11.475 37.8,33.885 z m -22.005,0.54 c 0,-10.26 -8.64,-13.77 -17.685,-13.77 h -15.525 v 27.405 h 15.66 c 8.64,0 17.55,-3.78 17.55,-13.635 z m 104.98737,71.28 -48.6,-72.9 v 72.9 h -21.6 V 439.92 h 24.975 l 45.9,68.985 V 439.92 h 21.6 v 105.705 z m -304.31249,0 v -9.18 h -0.26997 c -6.74901,9.855 -17.54744,10.53 -22.40674,10.53 -20.92195,0 -34.28501,-18.09 -34.28501,-37.53 0,-18.225 13.90298,-37.26 34.55497,-37.26 4.1844,0 14.17294,0.81 21.59686,9.585 h 0.26996 v -46.035 h 20.92196 v 109.89 z m 0.008,-36.18 c 0,-10.8 -7.965,-18.225 -17.82,-18.225 -9.855,0 -17.82,7.425 -17.82,18.225 0,10.935 7.965,18.495 17.82,18.495 9.855,0 17.82,-7.56 17.82,-18.495 z"
+         id="NordVPN"
+         inkscape:connector-curvature="0"
+         style="fill:#373b42" />
+      <path
+         d="M 133.95883,356.4 C 107.27983,319.3787 91.545825,273.82747 91.545825,224.57268 91.545825,100.54461 191.31173,0 314.37921,0 437.4467,0 537.2126,100.54461 537.2126,224.57268 c 0,49.25446 -15.73379,94.80542 -42.41248,131.8266 L 387.77351,181.2437 l -10.33534,17.5864 10.48602,48.91074 -73.54498,-126.81709 -45.49503,77.41337 10.59172,49.40372 -38.54992,-66.39686 z"
+         id="logomark"
+         inkscape:connector-curvature="0"
+         style="fill:#4687ff" />
+    </g>
+  </g>
+</svg>

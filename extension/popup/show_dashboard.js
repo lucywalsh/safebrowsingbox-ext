@@ -38,6 +38,7 @@ var alert_dict = {
   "DoNotTrack":"This site ignores Do Not Track headers",
   "Health":"This site collects your health information"}
 
+/*
 var advice_dict = {
   "Firstparty-tracking":"This site is tracking your activity",
   "Thirdparty-collection":"Consider installing an extension to block third-party cookies and remove outgoing links like Privacy Badger",
@@ -50,15 +51,29 @@ var advice_dict = {
   "DoNotTrack":"Consider installing Privacy Badger, which keeps track of whether sites ignore Do Not Track and will aggressively block cookies if so.",
   "Health":"Consider installing an extension to make user profiling more difficult [Learn more]"
 }
+*/
+var advice_links = {
+  "Firstparty-tracking":"<a href='advice_pages/firstparty-tracking.html' style='display:block;'>This site tracks your activity</a>",
+  "Thirdparty-collection":"<a href='advice_pages/thirdparty-collection.html' style='display:block'>Third-parties are collecting information about you</a>",
+  "Targeted-ads":"<a href='advice_pages/targeted-ads.html' style='display:block'>Targeted advertising is present on this site</a>",
+  "Personalisation":"<a href='advice_pages/personalisation.html' style='display:block'>This site uses your information to personalise the site to you</a>",
+  "Thirdparty-tracking":"<a href='advice_pages/thirdparty-tracking.html' style='display:block'>Third-parties are tracking your activity on this site</a>",
+  "Location":"<a href='advice_pages/location.html' style='display:block'>This site is collecting your location information</a>",
+  "Financial":"<a href='advice_pages/financial.html' style='display:block'>This site is collecting your financial information</a>",
+  "Personal":"<a href='advice_pages/personal.html' style='display:block;'>This site collects personal information</a>",
+  "DoNotTrack":"<a href='advice_pages/donottrack.html' style='display:block'>This site ignores Do Not Track headers</a>",
+  "Health":"<a href='advice_pages/health.html' style='display:block'>This site collects your health information</a>"
+}
 
 //stylise alert div
-function createAlertDiv(alert){
+function createAlertDiv(alert,color){
   var alert_text = alert_dict[alert];
   console.log(alert_text);
   var alertdiv = document.createElement("div");
-  alertdiv.appendChild(document.createTextNode(alert_text));
+  advice_link = advice_links[alert];
+  alertdiv.innerHTML = advice_link;
   alertdiv.className = "alert-div "+alert;
-  //console.log("alert-div "+alert);
+  alertdiv.style="background-color:"+color;
   return alertdiv
 }
 
@@ -115,15 +130,22 @@ browser.tabs.query({currentWindow: true, active: true})
           else{
           var alerts_list = document.createDocumentFragment();
           var advice_list = document.createDocumentFragment();
+          colors = ["#f54242","#fc8e44","#FFCC33","#52de52","#1ee3b2","#4db8ff","#b342f5"];
+          backup_colors = ["#0099FF","#ff638a","#ff66c4"];
           for(i=0;i<this_host_alerts[0].length;i++){
-            console.log(this_host_alerts[0][i]);
-            //if(alert_settings.includes(this_host_alerts[0][i])){
-              alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i]));
-              //advice_list.appendChild(createAdviceDiv(this_host_alerts[0][i]));
-            //}
+            if(colors!=[]){
+              color = colors[Math.floor(Math.random() * colors.length)];
+              ind = colors.indexOf(color);
+              colors.splice(ind,1);
+            }
+            else{
+              color = backup_colors[Math.floor(Math.random() * backup_colors.length)];
+              ind = backup_colors.indexOf(color);
+              backup_colors = backup_colors.splice(ind,1);
+            }
+              alerts_list.appendChild(createAlertDiv(this_host_alerts[0][i],color));
           }
           alertsnode.appendChild(alerts_list);
-          //advicenode.appendChild(advice_list);
         }
       }
       });
