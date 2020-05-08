@@ -11,6 +11,11 @@ a{
   text-decoration:none;
 }
 
+.help-button{
+  color:gray;
+  text-decoration:none;
+}
+
 .alert-div{
   padding:10px;
   margin:10px;

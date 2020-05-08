@@ -5,14 +5,6 @@ settings_button.addEventListener('click',function(){
   window.close();
 })
 
-//help button + popup
-//var help_modal = document.getElementById("myModal");
-
-var help_button = document.getElementById("help");
-help_button.addEventListener('click',function(){
-  //modal.style.display =
-})
-
 //analyse button
 var analyse_button = document.getElementById("alertsbutton");
 analyse_button.addEventListener('click',function(){
@@ -37,7 +29,7 @@ var alert_dict = {
   "Personal":"This site collects personal information",
   "DoNotTrack":"This site ignores Do Not Track headers",
   "Health":"This site collects your health information"}
-  
+
 var advice_links = {
   "Firstparty-tracking":"<a href='advice_pages/firstparty-tracking.html' style='display:block;'>This site tracks your activity</a>",
   "Thirdparty-collection":"<a href='advice_pages/thirdparty-collection.html' style='display:block'>Third-parties are collecting information about you</a>",
