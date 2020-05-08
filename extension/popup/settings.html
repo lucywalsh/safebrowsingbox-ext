@@ -14,13 +14,17 @@
             <label class="label-big-check">
               <input type="checkbox" name="alert1" id="firstparty-tracking">
               <label for="firstparty-tracking" class="check-title">First-Party Tracking</label>
+              <button class="icon-btn" id="help-firstpartytracking"><i class="fa fa-question"></i></button>
             </label>
+            <div id="firstpartytracking-explanation" class="popuptext" style="display:none">The site you are visiting tracks your activity</div>
           </td>
           <td>
             <label class="label-big-check">
               <input type="checkbox" name="alert2" id="targeted-ads">
               <label for="targeted-ads" class="check-title">Targeted Advertising</label>
+              <button class="icon-btn" id="help-targetedads"><i class="fa fa-question"></i></button>
             </label>
+            <div id="targetedads-explanation" class="popuptext" style="display:none">Your personal information is used to deliver ads to you</div>
           </td>
         </tr>
         <tr>
@@ -28,13 +32,17 @@
             <label class="label-big-check">
               <input type="checkbox" name="alert3" id="thirdparty-tracking">
               <label for="thirdparty-tracking" class="check-title">Third-Party Tracking</label>
+              <button class="icon-btn" id="help-thirdpartytracking"><i class="fa fa-question"></i></button>
             </label>
+            <div id="thirdpartytracking-explanation" class="popuptext" style="display:none">Other sites track your acitivty on this site</div>
           </td>
           <td>
             <label class="label-big-check">
               <input type="checkbox" name="alert4" id="thirdparty-collection">
               <label for="thirdparty-collection" class="check-title">Third-Party Data Collection</label>
+              <button class="icon-btn" id="help-thirdpartycollection"><i class="fa fa-question"></i></button>
             </label>
+            <div id="thirdpartycollection-explanation" class="popuptext" style="display:none">Other sites collect information about you on this site</div>
           </td>
         </tr>
 
@@ -42,13 +50,17 @@
             <label class="label-big-check">
                 <input type="checkbox" name="alert5" id="personal">
                 <label for="personal" class="check-title">Personal Information</label>
+                <button class="icon-btn" id="help-personal"><i class="fa fa-question"></i></button>
             </label>
+            <div id="personal-explanation" class="popuptext" style="display:none">This site collects your personal information e.g. age, gender, contact details, interests</div>
           </td>
           <td>
             <label class="label-big-check">
                 <input type="checkbox" name="alert6" id="financial">
                 <label for="financial" class="check-title">Financial Information</label>
+                <button class="icon-btn" id="help-financial"><i class="fa fa-question"></i></button>
             </label>
+            <div id="financial-explanation" class="popuptext" style="display:none">This site collects your financial information</div>
           </td>
         </tr>
         <tr>
@@ -56,13 +68,17 @@
             <label class="label-big-check">
               <input type="checkbox" name="alert9" id="health">
               <label for="health" class="check-title">Health Information</label>
+              <button class="icon-btn" id="help-health"><i class="fa fa-question"></i></button>
             </label>
+            <div id="health-explanation" class="popuptext" style="display:none">This site collects information about your health</div>
           </td>
           <td>
             <label class="label-big-check">
               <input type="checkbox" name="alert10" id="location">
               <label for="location" class="check-title">Location Information</label>
+              <button class="icon-btn" id="help-location"><i class="fa fa-question"></i></button>
             </label>
+            <div id="location-explanation" class="popuptext" style="display:none">This site collects your location information</div>
           </td>
         </tr>
         <tr>
@@ -70,13 +86,17 @@
             <label class="label-big-check">
               <input type="checkbox" name="alert7" id="personalisation">
               <label for="personalisation" class="check-title">Personalisation</label>
+              <button class="icon-btn" id="help-personalisation"><i class="fa fa-question"></i></button>
             </label>
+            <div id="personalisation-explanation" class="popuptext" style="display:none">This site uses your information to customise the website to your interests</div>
           </td>
           <td>
             <label class="label-big-check">
               <input type="checkbox" name="alert8" id="donottrack">
               <label for="donottrack" class="check-title">Do Not Track Headers Ignored</label>
+              <button class="icon-btn" id="help-donottrack"><i class="fa fa-question"></i></button>
             </label>
+            <div id="donottrack-explanation" class="popuptext" style="display:none">This site ignores when you ask it not to track you</div>
           </td>
         </tr>
         <tr>
@@ -89,5 +109,6 @@
       </table>
     </div>
     <script type="text/javascript" src="save_data.js"></script>
+    <script type="text/javascript" src="explanation-popups.js"></script>
   </body>
 </html>

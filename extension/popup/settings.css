@@ -69,3 +69,30 @@ h1{
     content: "\f14a";
     color: #3887FD;
 }
+
+/* Style buttons */
+.icon-btn {
+  background-color: white; /* Blue background */
+  border: none; /* Remove borders */
+  color: gray; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.icon-btn:hover {
+  color:black;
+}
+
+/*pop up edited from https://www.w3schools.com/howto/howto_js_popup.asp */
+.popuptext {
+  height:20px;
+  background-color: #d6d6d6;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  margin-top:-80px;
+}
