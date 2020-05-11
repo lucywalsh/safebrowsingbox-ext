@@ -1,7 +1,7 @@
 //When settings button is clicked on, open the Settings page in a new tab
 var settings_button = document.getElementById("settings");
 settings_button.addEventListener('click',function(){
-  browser.tabs.create({url: "settings.html"});
+  browser.tabs.create({url: "customise_alerts/settings.html"});
   window.close();
 })
 
