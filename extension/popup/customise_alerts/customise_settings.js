@@ -1,26 +1,26 @@
-settings = ["firstparty-tracking","thirdparty-collection","targeted-ads","personalisation","thirdparty-tracking","location","financial","personal","donottrack","health"];
+settings = ["firstparty-tracking", "thirdparty-collection", "targeted-ads", "personalisation", "thirdparty-tracking", "location", "financial", "personal", "donottrack", "health"];
 
 /* Function to create select box for user to choose their customisation option */
-let createCustomiseSelect = function(current_mode_setting,current_customise_setting){
-  //if mode of alert is LED, create a color selector
-  if(current_mode_setting == 'LED'){
-    let color_selector = document.createElement('input');
+let createCustomiseSelect = function(current_mode_setting, current_customise_setting) {
+  // if mode of alert is LED, create a color selector
+  if (current_mode_setting == "LED") {
+    let color_selector = document.createElement("input");
     color_selector.type = "color";
-    //set the color shown to the previous colour the user had chosen
+    // set the color shown to the previous colour the user had chosen
     color_selector.value = current_customise_setting;
-    color_selector.id = alert_id+"_customisedropdown";
-    color_selector.style="border:none;background-color:white";
+    color_selector.id = `${alert_id}_customisedropdown`;
+    color_selector.style = "border:none;background-color:white";
     return color_selector;
   }
   // if mode of alert is Sound, create drop down box containing different notes to choose from
-  if(current_mode_setting == 'Sound'){
-    let sound_selector = document.createElement('select');
+  if (current_mode_setting == "Sound") {
+    let sound_selector = document.createElement("select");
     let option1 = document.createElement("option");
     let option2 = document.createElement("option");
     let option3 = document.createElement("option");
     let option4 = document.createElement("option");
     let option5 = document.createElement("option");
-    //the values of the options are the frequency to tell the Arduino to play a note at on the Piezo speaker
+    // the values of the options are the frequency to tell the Arduino to play a note at on the Piezo speaker
     option1.value = "a5";
     option1.innerHTML = "Play an A note";
     option2.value = "b5";
@@ -36,15 +36,15 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
     sound_selector.appendChild(option3);
     sound_selector.appendChild(option4);
     sound_selector.appendChild(option5);
-    //set the option shown to be the previous option the user had chosen
+    // set the option shown to be the previous option the user had chosen
     sound_selector.value = current_customise_setting;
-    sound_selector.id = alert_id+"_customisedropdown";
+    sound_selector.id = `${alert_id}_customisedropdown`;
     sound_selector.style = "color:#60666d;font-size:12px;text-align:center;height:25px";
     return sound_selector;
   }
   // if the mode of alert is Movement, create a drop down to let the user choose whether to spin left or right
-  if(current_mode_setting == 'Movement'){
-    let movement_selector = document.createElement('select');
+  if (current_mode_setting == "Movement") {
+    let movement_selector = document.createElement("select");
     let option1 = document.createElement("option");
     let option2 = document.createElement("option");
     option1.value = "left";
@@ -55,71 +55,70 @@ let createCustomiseSelect = function(current_mode_setting,current_customise_sett
     movement_selector.appendChild(option2);
     // set the option shown to the previous option the user had chosen
     movement_selector.value = current_customise_setting;
-    movement_selector.id = alert_id+"_customisedropdown";
+    movement_selector.id = `${alert_id}_customisedropdown`;
     movement_selector.style = "color:#60666d;font-size:12px;text-align:center;height:25px";
     return movement_selector;
   }
-}
+};
 
 // dictionary to map alert IDs to formatted text to display in the UI
-var alert_dict = {
-  "firstparty-tracking":"First-party Tracking",
-  "thirdparty-collection":"Third-party Collection",
-  "targeted-ads":"Targeted Advertising",
-  "personalisation":"Site Personalisation",
-  "thirdparty-tracking":"Third-party Tracking",
-  "location":"Location Information",
-  "financial":"Financial Information",
-  "personal":"Personal Information",
-  "donottrack":"Do Not Track Headers Ignored",
-  "health":"Health Information"
-}
+let alert_dict = {
+  "firstparty-tracking": "First-party Tracking",
+  "thirdparty-collection": "Third-party Collection",
+  "targeted-ads": "Targeted Advertising",
+  "personalisation": "Site Personalisation",
+  "thirdparty-tracking": "Third-party Tracking",
+  "location": "Location Information",
+  "financial": "Financial Information",
+  "personal": "Personal Information",
+  "donottrack": "Do Not Track Headers Ignored",
+  "health": "Health Information"
+};
 
-//create a HTML table to hold the page content
+// create a HTML table to hold the page content
 table = document.getElementById("customise-settings");
 
-browser.storage.local.get().then(function(item){
-  //retrieve the user's current alert settings from local storage
-  set_alerts = item['alertSettings'];
-  hardware_settings = item['hardwareSettings']
-  customise_settings = item['customiseSettings'];
+browser.storage.local.get().then(item => {
+  // retrieve the user's current alert settings from local storage
+  set_alerts = item.alertSettings;
+  hardware_settings = item.hardwareSettings;
+  customise_settings = item.customiseSettings;
 
-  //insert row into table for each alert
-  for (i=0;i<set_alerts.length;i++){
+  // insert row into table for each alert
+  for (i = 0; i < set_alerts.length; i++) {
     alert_id = set_alerts[i];
-    //look-up alert id in dictionary to get formatted text
+    // look-up alert id in dictionary to get formatted text
     alert_name = alert_dict[alert_id];
 
-    if(alert_name!=undefined){
-      //get user's current settings for that alert
+    if (alert_name != undefined) {
+      // get user's current settings for that alert
       current_mode_setting = "";
       current_customise_setting = "";
       current_mode_setting = hardware_settings[alert_id];
       current_customise_setting = customise_settings[alert_id];
 
-      //create HTML table elements to hold contents
+      // create HTML table elements to hold contents
       row = document.createElement("tr");
       row.style = "padding:10px";
       alert = document.createElement("td");
       alert.innerHTML = alert_name;
-      alert.style="padding-bottom:10px";
+      alert.style = "padding-bottom:10px";
       mode_cell = document.createElement("td");
-      mode_cell.id = alert_id+"_modetext";
+      mode_cell.id = `${alert_id}_modetext`;
       mode_cell.innerHTML = current_mode_setting;
       customise_cell = document.createElement("td");
-      customise_cell.id = alert_id+"_customise";
+      customise_cell.id = `${alert_id}_customise`;
 
-      //create drop down element to choose customisation
-      select_customise = createCustomiseSelect(current_mode_setting,current_customise_setting);
-      //add the drop down element to the right cell in the table
+      // create drop down element to choose customisation
+      select_customise = createCustomiseSelect(current_mode_setting, current_customise_setting);
+      // add the drop down element to the right cell in the table
       customise_cell.appendChild(select_customise);
 
-      //add elements to table
+      // add elements to table
       row.appendChild(alert);
       row.appendChild(mode_cell);
       row.appendChild(customise_cell);
       table.appendChild(row);
-
     }
   }
 });
