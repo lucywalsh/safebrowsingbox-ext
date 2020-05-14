@@ -1,0 +1,98 @@
+html,body{
+  padding:10px;
+  margin-right:10px;
+  font-family: Didact Gothic;
+}
+
+tr{
+  padding:20px;
+}
+
+td{
+  padding-right:20px;
+}
+
+h1{
+  text-align:center;
+}
+
+.styled-button{
+  background-color: white;
+  color;black;
+  border-radius: 5px;
+  border:1px solid gray;
+  font-family: Didact Gothic;
+  padding: 10px 16px;
+  font-size:16px
+}
+
+.sub-options{
+  left:10px
+}
+
+.settings-content{
+  height:67%;
+  padding:10px;
+  margin-right:5px;
+  border-radius:5px;
+  background-color:white;
+  /*background-color: #bff2ff;*/
+}
+
+.label-big-check {
+	position: relative;
+	display: block;
+	padding: 15px 0 15px 35px;
+	margin: 0;
+	cursor: pointer;
+}
+.label-big-check input {
+	display: none;
+}
+.label-big-check .check-title {
+	font-size: .9em;
+	font-weight: 700;
+	cursor: pointer;
+}
+.label-big-check input[type="checkbox"] + .check-title:before {
+	position: absolute;
+	top: 12px;
+	left: 0;
+	width: 30px;
+	font-family: FontAwesome;
+  content: "\f096";
+  font-size: 2em;
+  line-height: 1;
+  color: gray;
+}
+.label-big-check input[type="checkbox"]:checked + .check-title:before {
+    content: "\f14a";
+    color: #3887FD;
+}
+
+/* Style buttons */
+.icon-btn {
+  background-color: white; /* Blue background */
+  border: none; /* Remove borders */
+  color: gray; /* White text */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+/* Darker background on mouse-over */
+.icon-btn:hover {
+  color:black;
+}
+
+/*pop up edited from https://www.w3schools.com/howto/howto_js_popup.asp */
+.popuptext {
+  height:20px;
+  background-color: #d6d6d6;
+  color: #000;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  margin-top:-80px;
+}
