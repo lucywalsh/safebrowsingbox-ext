@@ -64,7 +64,7 @@ browser.tabs.query({currentWindow: true, active: true})
       else {
         let this_host_alerts = Object.values(item);
         // if local storage is blank or contains NA, policy was not successful analysed
-        if (this_host_alerts[0] === "NA" || this_host_alerts[0] === "") {
+        if (this_host_alerts[0] === "NA" || this_host_alerts[0][0] === "") {
           // display error message to user
           let no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
           alertsnode.appendChild(no_policy_text);

@@ -109,8 +109,8 @@ def sendMessage(encodedMessage):
     sys.stdout.flush()
 
 while True:
-    receivedMessage = getMessage()
     try:
+        receivedMessage = getMessage()
         #scrape text from policy webpage
         page_content = get_page_content(receivedMessage)
         #get predicted labels

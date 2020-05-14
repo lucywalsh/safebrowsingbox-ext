@@ -183,6 +183,7 @@ browser.tabs.onUpdated.addListener((tabId, changeInfo, tabInfo) => {
             this_host_alerts = Object.values(item)[0];
             // get user's alert settings
             browser.storage.local.get().then(item => {
+              let this_host_alerts = item[currentHost];
               let alert_settings = item.alertSettings;
               hardware_settings = item.hardwareSettings;
               customise_settings = item.customiseSettings;
