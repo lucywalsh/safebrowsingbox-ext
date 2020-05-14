@@ -12,7 +12,7 @@ import os
 import re
 import winreg
 
-key_path = 'Software\\Mozilla\\NativeMessagingHosts\\ping_pong'
+key_path = 'Software\\Mozilla\\NativeMessagingHosts\\analyse_policy'
 # Assuming current user overrides local machine.
 key_roots = ['HKEY_CURRENT_USER', 'HKEY_LOCAL_MACHINE']
 
