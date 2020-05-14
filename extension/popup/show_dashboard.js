@@ -55,7 +55,7 @@ function createAlertDiv(alert,color){
   return alertdiv
 }
 
-//When the user navigates to a new tab, display alerts for current host in the dashboard
+// Display alerts for current host in the dashboard
 browser.tabs.query({currentWindow: true, active: true})
     .then((tabs) => {
       //get current host
