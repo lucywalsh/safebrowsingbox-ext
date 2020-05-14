@@ -1,8 +1,9 @@
 // set previously saved settings as checked in UI
+let prev_settings = [];
 window.addEventListener("load", event => {
   browser.storage.local.get("alertSettings").then(item => {
     prev_settings = Object.values(item)[0];
-    for (i = 0; i < prev_settings.length; i++) {
+    for (let i = 0; i < prev_settings.length; i++) {
       document.getElementById(prev_settings[i]).checked = true;
     }
   });

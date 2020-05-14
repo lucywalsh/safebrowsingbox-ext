@@ -1,7 +1,7 @@
-settings = ["firstparty-tracking", "thirdparty-collection", "targeted-ads", "tersonalisation", "thirdparty-tracking", "tocation", "tinancial", "tersonal", "donottrack", "health"];
+let settings = ["firstparty-tracking", "thirdparty-collection", "targeted-ads", "tersonalisation", "thirdparty-tracking", "tocation", "tinancial", "tersonal", "donottrack", "health"];
 
 /* Function to create drop down element containing options for how to be alerted */
-let createModeSelect = function(current_mode_setting) {
+let createModeSelect = function(current_mode_setting, alert_id) {
   let select_mode = document.createElement("select");
   let led_option = document.createElement("option");
   led_option.value = "LED";
@@ -37,39 +37,40 @@ let alert_dict = {
 };
 
 // create HTML table to hold page content
-table = document.getElementById("hardware-settings");
+let table = document.getElementById("hardware-settings");
 
 browser.storage.local.get().then(item => {
   // get the user's chosen alerts they want to be notified of
-  set_alerts = item.alertSettings;
-  hardware_settings = item.hardwareSettings;
-
+  let set_alerts = item.alertSettings;
+  let hardware_settings = item.hardwareSettings;
+  let alert_id = "";
+  let alert_name = "";
   // insert row into table for each alert
-  for (i = 0; i < set_alerts.length; i++) {
+  for (let i = 0; i < set_alerts.length; i++) {
     alert_id = set_alerts[i];
     // look-up alert id
     alert_name = alert_dict[alert_id];
 
-    if (alert_name != undefined) {
+    let current_mode_setting = "";
+    if (alert_name !== undefined) {
       // find current settings for that alert
-      current_mode_setting = "";
-      for (j = 0; j < Object.keys(hardware_settings).length; j++) {
-        if (Object.keys(hardware_settings)[j] == alert_id) {
+      for (let j = 0; j < Object.keys(hardware_settings).length; j++) {
+        if (Object.keys(hardware_settings)[j] === alert_id) {
           current_mode_setting = Object.values(hardware_settings)[j];
         }
       }
 
       // create HTML elements to hold content
-      row = document.createElement("tr");
+      let row = document.createElement("tr");
       row.style = "padding:10px";
-      alert = document.createElement("td");
+      let alert = document.createElement("td");
       alert.style = "padding-bottom:10px";
       alert.innerHTML = alert_name;
-      mode_cell = document.createElement("td");
+      let mode_cell = document.createElement("td");
       mode_cell.id = `${alert_id}_mode`;
 
       // create drop down for user to choose how they would like to be alerted
-      select_mode = createModeSelect(current_mode_setting);
+      let select_mode = createModeSelect(current_mode_setting, alert_id);
 
       // add drop down element to correct cell in the table
       mode_cell.appendChild(select_mode);
@@ -82,12 +83,12 @@ browser.storage.local.get().then(item => {
 }).then(() => {
   browser.storage.local.get("hardwareSettings").then(item => {
     // get the user's settings for which alerts they would like to be notified of
-    prev_settings = Object.values(item)[0];
+    let prev_settings = Object.values(item)[0];
     // if user previously chose to be notified of alert, put a check in the checkbox, else leave it empty
-    for (i = 0; i < settings.length; i++) {
+    for (let i = 0; i < settings.length; i++) {
       let checkbox = document.getElementById(`${settings[i]}_modedropdown`);
       let prev_value = prev_settings[settings[i]];
-      if (prev_value != undefined && checkbox != null) {
+      if (prev_value !== undefined && checkbox !== null) {
         checkbox.value = prev_value;
       }
     }

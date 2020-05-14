@@ -15,21 +15,6 @@ analyse_button.addEventListener("click", () => {
 // Get the HTML elements to insert info into
 let alertsnode = document.getElementById("alerts");
 let alertsbutton = document.getElementById("alertsbutton");
-let currenthostnode = document.getElementById("currenthost");
-
-// dictionary mapping alert IDs to formatted text to display in UI
-let alert_dict = {
-  "Firstparty-tracking": "This site is tracking your activity",
-  "Thirdparty-collection": "Third-parties are collecting information about you on this site",
-  "Targeted-ads": "Targeted advertising is present on this site",
-  "Personalisation": "This site uses your information to personalise the site to you",
-  "Thirdparty-tracking": "Third-parties are tracking your activity on this site",
-  "Location": "This site is collecting your location information",
-  "Financial": "This site is collecting your financial information",
-  "Personal": "This site collects personal information",
-  "DoNotTrack": "This site ignores Do Not Track headers",
-  "Health": "This site collects your health information"
-};
 
 // dictionary mapping alert IDs to the link to their advice page
 let advice_links = {
@@ -47,9 +32,8 @@ let advice_links = {
 
 // create and stylise div element to display alert to user
 function createAlertDiv(alert, color) {
-  let alert_text = alert_dict[alert];
   let alertdiv = document.createElement("div");
-  advice_link = advice_links[alert];
+  let advice_link = advice_links[alert];
   alertdiv.innerHTML = advice_link;
   alertdiv.className = `alert-div ${alert}`;
   alertdiv.style = `background-color:${color}`;
@@ -67,19 +51,20 @@ browser.tabs.query({currentWindow: true, active: true})
     let alert_settings = [];
     browser.storage.local.get("alertSettings").then(item => {
       alert_settings = Object.values(item)[0];
+      return;
     });
 
     // retrieve alerts from local storage for current website
     browser.storage.local.get(currentHost).then(item => {
       // if the website has not been analysed yet, give feedback to user
-      if (Object.keys(item).length == 0) {
+      if (Object.keys(item).length === 0) {
         let analysing_text = document.createTextNode("Analysing policy... close and reopen this tab to recieve your alerts.");
         alertsnode.appendChild(analysing_text);
       }
       else {
-        this_host_alerts = Object.values(item);
+        let this_host_alerts = Object.values(item);
         // if local storage is blank or contains NA, policy was not successful analysed
-        if (this_host_alerts[0] == "NA" || this_host_alerts[0] == "") {
+        if (this_host_alerts[0] === "NA" || this_host_alerts[0] === "") {
           // display error message to user
           let no_policy_text = document.createTextNode("Sorry, but we couldn't find the privacy policy for this website. To get alerts for this site, navigate to it's privacy policy and click 'Analyse'. We'll remember this for next time so you won't have to do it again.");
           alertsnode.appendChild(no_policy_text);
@@ -100,26 +85,26 @@ browser.tabs.query({currentWindow: true, active: true})
         else {
           // create elements to insert info into
           let alerts_list = document.createDocumentFragment();
-          let advice_list = document.createDocumentFragment();
           // distinct, bright colours
-          colors = ["#f54242", "#fc8e44", "#FFCC33", "#52de52", "#1ee3b2", "#4db8ff", "#b342f5"];
+          let colors = ["#f54242", "#fc8e44", "#FFCC33", "#52de52", "#1ee3b2", "#4db8ff", "#b342f5"];
+          let color = "#f54242";
           // these colours are a bit similar to above colours, so only use if necessary
-          backup_colors = ["#0099FF", "#ff638a", "#ff66c4"];
+          let backup_colors = ["#0099FF", "#ff638a", "#ff66c4"];
           // loop over all the alerts stored for this website
-          for (i = 0; i < this_host_alerts[0].length; i++) {
-            current_alert = this_host_alerts[0][i];
+          for (let i = 0; i < this_host_alerts[0].length; i++) {
+            let current_alert = this_host_alerts[0][i];
             // check if user has asked to be notified of this alert - if so, create Div element for that alert
             if (alert_settings.includes(current_alert.toLowerCase())) {
               // choose random colour for alert div to prevent user habituation
-              if (colors != []) {
+              if (colors !== []) {
                 color = colors[Math.floor(Math.random() * colors.length)];
-                ind = colors.indexOf(color);
+                let ind = colors.indexOf(color);
                 colors.splice(ind, 1);
               }
               // usually 7 or less alerts, but in rare case when there are more, use backup colors
               else {
                 color = backup_colors[Math.floor(Math.random() * backup_colors.length)];
-                ind = backup_colors.indexOf(color);
+                let ind = backup_colors.indexOf(color);
                 backup_colors = backup_colors.splice(ind, 1);
               }
               // create element using alert text and chosen random colour
@@ -130,5 +115,7 @@ browser.tabs.query({currentWindow: true, active: true})
           alertsnode.appendChild(alerts_list);
         }
       }
+      return null;
     });
+    return null;
   });

@@ -9,7 +9,7 @@ module.exports = {
     "mocha": true,
     "node": true
   },
-  "globals": {"chrome": true},
+  "globals": {"chrome": true, "browser": true, "io": true},
   "plugins": [
     "json",
     "mocha",
@@ -32,8 +32,6 @@ module.exports = {
     "mocha/valid-suite-description": 2,
     "mocha/valid-test-description": 2,
 
-    "promise/always-return": 2,
-    "promise/catch-or-return": 2,
     "promise/param-names": 2,
 
     "accessor-pairs": [2, {"setWithoutGet": true, "getWithoutSet": false}],
@@ -77,7 +75,7 @@ module.exports = {
     "keyword-spacing": 2,
     "linebreak-style": [2, "unix"],
     "lines-around-comment": [2, {"beforeBlockComment": true, "allowObjectStart": true}],
-    "max-depth": [2, 4],
+    "max-depth": [2, 5],
     "max-len": 0,
     "max-lines": 0,
     "max-nested-callbacks": [2, 4],
