@@ -48,12 +48,12 @@
     }
   ],
   "scripts": {
-    "bundle": "web-ext -s add-on -a dist build --overwrite-dest",
+    "bundle": "web-ext -s extension -a dist build --overwrite-dest",
     "download": "node scripts/get_ff.js",
-    "firefox": "web-ext -s add-on run --firefox-binary ${FIREFOX_BINARY:-firefox}",
+    "firefox": "web-ext -s extension run --firefox-binary ${FIREFOX_BINARY:-firefox}",
     "lint": "npm-run-all lint:*",
     "lint:eslint": "eslint --ext=.js,.json .",
-    "lint:webext": "web-ext -s add-on lint",
+    "lint:webext": "web-ext -s extension lint",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
     "test:karma": "NODE_ENV=test karma start",
