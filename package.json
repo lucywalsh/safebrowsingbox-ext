@@ -35,7 +35,7 @@
     "lint:webext": "web-ext -s extension lint",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "test:unit": "open test/unittests.html",
+    "test:unit": "open test/unit_test_runner.html",
     "virtualenv-postinstall": "virtualenv-postinstall"
   },
   "license": "MPL-2.0",
