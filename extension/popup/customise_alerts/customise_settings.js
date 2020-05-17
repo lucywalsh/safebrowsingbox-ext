@@ -1,5 +1,5 @@
 /* Function to create select box for user to choose their customisation option */
-let createCustomiseSelect = function(current_mode_setting, current_customise_setting, alert_id) {
+function createCustomiseSelect(current_mode_setting, current_customise_setting, alert_id) {
   // if mode of alert is LED, create a color selector
   if (current_mode_setting === "LED") {
     let color_selector = document.createElement("input");
@@ -58,32 +58,24 @@ let createCustomiseSelect = function(current_mode_setting, current_customise_set
     return movement_selector;
   }
   return null;
-};
+}
 
-// dictionary to map alert IDs to formatted text to display in the UI
-let alert_dict = {
-  "firstparty-tracking": "First-party Tracking",
-  "thirdparty-collection": "Third-party Collection",
-  "targeted-ads": "Targeted Advertising",
-  "personalisation": "Site Personalisation",
-  "thirdparty-tracking": "Third-party Tracking",
-  "location": "Location Information",
-  "financial": "Financial Information",
-  "personal": "Personal Information",
-  "donottrack": "Do Not Track Headers Ignored",
-  "health": "Health Information"
-};
-
-// create a HTML table to hold the page content
-let table = document.getElementById("customise-settings");
-
-browser.storage.local.get().then(item => {
-  // retrieve the user's current alert settings from local storage
-  let set_alerts = item.alertSettings;
-  let hardware_settings = item.hardwareSettings;
-  let customise_settings = item.customiseSettings;
-
-  // insert row into table for each alert
+function create_alert_table(set_alerts, hardware_settings, customise_settings) {
+  // dictionary to map alert IDs to formatted text to display in the UI
+  let alert_dict = {
+    "firstparty-tracking": "First-party Tracking",
+    "thirdparty-collection": "Third-party Collection",
+    "targeted-ads": "Targeted Advertising",
+    "personalisation": "Site Personalisation",
+    "thirdparty-tracking": "Third-party Tracking",
+    "location": "Location Information",
+    "financial": "Financial Information",
+    "personal": "Personal Information",
+    "donottrack": "Do Not Track Headers Ignored",
+    "health": "Health Information"
+  };
+  let rows = [];
+  // create row for each alert
   for (let i = 0; i < set_alerts.length; i++) {
     let alert_id = set_alerts[i];
     // look-up alert id in dictionary to get formatted text
@@ -117,7 +109,23 @@ browser.storage.local.get().then(item => {
       row.appendChild(alert);
       row.appendChild(mode_cell);
       row.appendChild(customise_cell);
-      table.appendChild(row);
+      rows.push(row);
     }
+  }
+  return rows;
+}
+
+browser.storage.local.get().then(item => {
+  // retrieve the user's current alert settings from local storage
+  let set_alerts = item.alertSettings;
+  let hardware_settings = item.hardwareSettings;
+  let customise_settings = item.customiseSettings;
+  // get HTML table to hold the page content
+  let table = document.getElementById("customise-settings");
+  // create row for each alert
+  let rows = create_alert_table(set_alerts, hardware_settings, customise_settings);
+  // add rows to table
+  for (let i = 0; i < rows.length; i++) {
+    table.appendChild(rows[i]);
   }
 });
