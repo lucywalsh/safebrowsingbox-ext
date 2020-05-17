@@ -12,7 +12,6 @@
   "engines": {
     "firefox": ">=48.0a1"
   },
-  "dependencies": {},
   "devDependencies": {
     "eslint": "4.5.0",
     "eslint-plugin-json": "1.2.0",
@@ -56,8 +55,7 @@
     "lint:webext": "web-ext -s extension lint",
     "test": "npm-run-all test:*",
     "test:lint": "npm run lint",
-    "test:karma": "NODE_ENV=test karma start",
-    "test:func": "export FIREFOX_BINARY=${FIREFOX_BINARY:-firefox} && npm run bundle && XPI_NAME=dist/safebrowsingbox-ext-1.0.0.zip mocha test/functional/",
+    "test:unit": "open test/unittests.html",
     "virtualenv-postinstall": "virtualenv-postinstall"
   },
   "license": "MPL-2.0",
