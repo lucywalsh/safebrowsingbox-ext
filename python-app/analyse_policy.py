@@ -12,7 +12,7 @@ import re
 from joblib import dump,load
 
 #load pre-trained model
-clf = load('trained_logreg_2.joblib')
+clf = load('trained_sgd_2.joblib')
 
 #load TF-IDF Vectorizer to create numerical vectors from policy segments
 tfidf_vectorizer = load('tfidf_vectorizer_2.joblib')
@@ -109,8 +109,8 @@ def sendMessage(encodedMessage):
     sys.stdout.flush()
 
 while True:
-    receivedMessage = getMessage()
     try:
+        receivedMessage = getMessage()
         #scrape text from policy webpage
         page_content = get_page_content(receivedMessage)
         #get predicted labels

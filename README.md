@@ -1,10 +1,14 @@
 SAFE BROWSING BOX EXTENSION
 
-This readme explains how to setup and install the Safe Browsing Box extension. There are several folders; the browser extension can be found under "extension", and this connects to 1) a Python application which analyses privacy policies, found in the "app" folder, and 2) a Node.js server that passes messages to the tangible device, found in the "" folder. 
+This readme explains how to setup and install the Safe Browsing Box extension. There are several folders; the browser extension can be found under "extension", and this connects to 1) a Python application which analyses privacy policies, found in the "app" folder, and 2) a Node.js server that passes messages to the tangible device, found in the "extension-server" folder.
 
 ## System Requirements ##
 
+Python 2.7
 
+Node.js
+
+Firefox
 
 ## Setup ##
 
@@ -14,11 +18,13 @@ To get this working, there's a little setup to do.
 
 --Python App--
 
-1. Edit the "path" property of "analyse_policy.json" to point to the location of "analyse_policy.py" on your computer. Note that you must use absolute paths. 
-2. Copy "ping_pong.json" to the correct location on your computer. See [App manifest location ](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Native_manifests#Manifest_location) to find the correct location for your OS.
+1. Edit the "path" property of "analyse_policy.json" to point to the location of "analyse_policy.py" on your computer. Note that you must use absolute paths.
+
+2. Copy "analyse_policy.json" to the correct location on your computer. See [App manifest location ](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Native_manifests#Manifest_location) to find the correct location for your OS.
 
 --Node Server--
 
+Open terminal and navigate to the extension-server folder. Run node app.js to start the local server, and leave this running while you are browsing. 
 
 
 ### Windows setup ###
@@ -34,14 +40,9 @@ To assist in troubleshooting on Windows, there is a script called `check_config_
 
 --Node Server--
 
+Open the command line and navigate to the extension-server folder. Run node app.js to start the local server, and leave this running while you are browsing. 
+
 
 ## Install Extension ##
 
-
-
-
-To test that you've installed the extension correctly, go to Tools > Web Developer > Browser Console and you should see the following welcome message: 
-
-## Using the Extension ##
-
-
+Open Firefox and go to about:debugging. Click "Load Temporary Add-on" and navigate to the extension folder. Select manifest.json and the extension will be installed.  
