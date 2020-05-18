@@ -1,7 +1,7 @@
 {
   "name": "analyse_policy",
   "description": "Python script to analyse privacy policies",
-  "path": "/Users/lucywalsh/Documents/safebrowsingbox-ext-dev/python-app/analyse_policy.py",
+  "path": "/Users/{USERNAME}/Documents/safebrowsingbox-ext-dev/python-app/analyse_policy.py",
   "type": "stdio",
   "allowed_extensions": [ "safebrowsingbox@example.com" ]
 }
